@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
 import useDebounce from '../../hooks/useDebounce'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     const [reports, setReports] = useState([])
@@ -137,10 +138,13 @@ useEffect(() => {
 
   <ul>
         {reports.map((report) => (
-          <li key={report._id}>{report.title}</li>
+          <li key={report._id}>
+            <Link to={`/reports/${report._id}`}>{report.title} - Detalle</Link>
+            
+            </li>
         ))}
       </ul>
-
+      
 
 </div>
     
