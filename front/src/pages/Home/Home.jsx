@@ -43,7 +43,7 @@ useEffect(() => {
           setReportDescription("");
           setReportLocation("");
       
-          // Traer los reportes nuevamente
+          // Traer los reportes nuevamente - actualiza la lista
           fetchReports();
         } catch (err) {
           console.error(err);
