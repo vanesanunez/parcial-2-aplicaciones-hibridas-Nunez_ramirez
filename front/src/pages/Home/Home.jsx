@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
+import useDebounce from '../../hooks/useDebounce'
 
 const Home = () => {
     const [reports, setReports] = useState([])
@@ -8,6 +9,7 @@ const Home = () => {
     const [reportLocation, setReportLocation] = useState("")
     const [search, setSearch] = useState("")
     const [suggestions, setSuggestions] = useState([])
+    const debouncedSearch = useDebounce(search, 1000)
 
   //traer todos los reportes (no requiere token de autenticación)
 const fetchReports = async () => {
@@ -64,23 +66,43 @@ useEffect(() => {
         console.error(err)
       }
     }
+    useEffect(() => {
+      if(debouncedSearch){
+          // fetch
+          fetchSuggestions(debouncedSearch)
+      }else{
+          setSuggestions([])
+      }
+  }, [debouncedSearch])
+
+  const fetchSuggestions = async (searchTeam) => {
+      try{
+          const res = await axios.get("http://localhost:3002/reports/search", {
+              params: {title: searchTeam}
+          });
+          setSuggestions(res.data)
+      }catch(err){
+          console.error(err)
+      }
+  }
+    
 
     const handleSearchChange = async (e) => {
       const value = e.target.value;
       setSearch(value);
 
-      if(value){
-        try{
-          const res = await axios.get("http://localhost:3002/reports/search", {
-            params: {title:  value}
-          });
-          setSuggestions(res.data) //muestra sugerencias
-        }catch(err){
-          console.error(err)
-        }
-      }else{
-        setSuggestions([])
-      }
+      // if(value){
+      //   try{
+      //     const res = await axios.get("http://localhost:3002/reports/search", {
+      //       params: {title:  value}
+      //     });
+      //     setSuggestions(res.data) //muestra sugerencias
+      //   }catch(err){
+      //     console.error(err)
+      //   }
+      // }else{
+      //   setSuggestions([])
+      // }
     }
 
   return (
@@ -97,8 +119,8 @@ useEffect(() => {
 
   {/*form search */}
   <form onSubmit={(e) => {e.preventDefault(); handleSearch(search)}}>
-    <input type="text"placeholder='search by name' value={search} onChange={handleSearchChange}/>
-    <button type='submit'>Search</button>
+    <input type="text"placeholder='buscar por nombre' value={search} onChange={handleSearchChange}/>
+    <button type='submit'>Buscar</button>
     {
       suggestions.length > 0 && (
         <ul className='autocomplete-suggestions'>
