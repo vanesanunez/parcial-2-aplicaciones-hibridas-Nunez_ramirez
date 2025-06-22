@@ -17,7 +17,7 @@ const Login = () => {
 
       const token = res.data.token;
       localStorage.setItem("token", token);
-      navigate("/home"); // redirige al Home
+      navigate("/"); // redirige al Home
 
     } catch (error) {
       console.error("Error al iniciar sesión:", error.response?.data?.message || error.message);
