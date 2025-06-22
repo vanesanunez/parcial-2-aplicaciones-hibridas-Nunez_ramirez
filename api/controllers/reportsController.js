@@ -67,6 +67,7 @@ export const searchByTag = async (req, res) => {
   }
 };
 
+
 // Actualizar reporte (requiere token)
 export const updateReporte = async (req, res) => {
   try {
@@ -105,4 +106,21 @@ export const deleteReporte = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+//Nuevo método para búsqueda 
+// Buscar reportes por título
+export const searchByTitle = async (req, res) => {
+  try {
+    const { title } = req.query;
+    if (!title) return res.status(400).json({ error: "No se proporcionó title para buscar" });
+
+    const regex = new RegExp(title, "i"); // búsqueda case-insensitive
+    const reportes = await Report.find({ title: regex });
+
+    res.json(reportes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 

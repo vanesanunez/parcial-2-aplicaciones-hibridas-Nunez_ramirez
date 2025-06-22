@@ -6,6 +6,8 @@ const Home = () => {
     const [reportName, setReportName] = useState("")
     const [reportDescription, setReportDescription] = useState("")
     const [reportLocation, setReportLocation] = useState("")
+    const [search, setSearch] = useState("")
+    const [suggestions, setSuggestions] = useState([])
 
   //traer todos los reportes (no requiere token de autenticación)
 const fetchReports = async () => {
@@ -49,10 +51,40 @@ useEffect(() => {
           console.error(err);
         }
         
-    };
+    }
+
+    const handleSearch = async (searchTerm) => {
+      try{
+        const res = await axios.get("http://localhost:3002/reports/search", {
+          params: {title: searchTerm}
+        });
+        setReports(res.data)
+        setSuggestions([])
+      }catch(err){
+        console.error(err)
+      }
+    }
+
+    const handleSearchChange = async (e) => {
+      const value = e.target.value;
+      setSearch(value);
+
+      if(value){
+        try{
+          const res = await axios.get("http://localhost:3002/reports/search", {
+            params: {title:  value}
+          });
+          setSuggestions(res.data) //muestra sugerencias
+        }catch(err){
+          console.error(err)
+        }
+      }else{
+        setSuggestions([])
+      }
+    }
 
   return (
-    <div>
+  <div>
         <h1>Home</h1>
         <h2>Reportes</h2>
 
@@ -61,18 +93,34 @@ useEffect(() => {
         <input type="text" placeholder='Descripción' value={reportDescription} onChange={(e) => setReportDescription(e.target.value)}/>
         <input type="text" placeholder='Ubicación' value={reportLocation} onChange={(e) => setReportLocation(e.target.value)}/>
         <button type='submit'>Agregar reporte</button>
+        </form>
 
-    <ul> 
-      {
-        reports.map(report => (
+  {/*form search */}
+  <form onSubmit={(e) => {e.preventDefault(); handleSearch(search)}}>
+    <input type="text"placeholder='search by name' value={search} onChange={handleSearchChange}/>
+    <button type='submit'>Search</button>
+    {
+      suggestions.length > 0 && (
+        <ul className='autocomplete-suggestions'>
+          {
+            suggestions.map((suggestion) => (
+              <li key={suggestion._id}>{suggestion.title}</li>
+            ))
+          }
+        </ul>
+      )
+  }
+  
+  </form>
+
+  <ul>
+        {reports.map((report) => (
           <li key={report._id}>{report.title}</li>
-        ))
-      }
-    </ul>
+        ))}
+      </ul>
 
-    </form>
 
-    </div>
+</div>
     
   )
 }
