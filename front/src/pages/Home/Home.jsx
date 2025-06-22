@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
+    const navigate = useNavigate();
     const [reports, setReports] = useState([])
     const [reportName, setReportName] = useState("")
     const [reportDescription, setReportDescription] = useState("")
@@ -54,6 +56,8 @@ useEffect(() => {
   return (
     <div>
         <h1>Home</h1>
+         <button onClick={() => navigate("/rutas")}>Ir a rutas seguras</button>
+
         <h2>Reportes</h2>
 
     <form onSubmit={handleSubmit}>

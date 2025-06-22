@@ -2,7 +2,7 @@ import Route from "../models/routesModel.js";
 
 // Crear una ruta segura sugerida por el usuario (requiere token)
 export const createRoute = async (req, res) => {
-  const { name, startPoint, endPoint, description } = req.body;
+  const { name, startPoint, endPoint, description, locationPoint } = req.body;
   const userId = req.user.id;
 
   if (!name || !startPoint || !endPoint || !description) {
