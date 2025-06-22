@@ -8,6 +8,8 @@ reportsRouter.post('/', authenticateJWT, createReporte); // requiere token para 
 reportsRouter.get('/', getReportes); 
 reportsRouter.get('/:id', getReporteById); 
 reportsRouter.get('/search/tags', searchByTag); 
+//reportsRouter.get('/search', searchReports); 
+//reportsRouter.get('/:reportId/details', getReportDetailsWithTasks); 
 reportsRouter.put('/:id', authenticateJWT, updateReporte); // requiere token para modificar
 reportsRouter.delete('/:id', authenticateJWT, deleteReporte); // requiere token para eliminar
 

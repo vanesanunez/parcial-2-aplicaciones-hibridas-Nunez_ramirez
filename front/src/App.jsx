@@ -3,15 +3,16 @@ import './App.css'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register';
+import Reports from './pages/Reports.jsx/Reports'
 
 function App() {
   
   return (
     <>
      <Routes>
-      <Route path="/home" element={<Home/>}></Route>
+      <Route path="/" element={<Home/>}></Route>
       <Route path="/register" element={<Register />} />
-      <Route path="/" element={<Login/>}></Route>
+      <Route path="/login" element={<Login/>}></Route>
      </Routes>
     </>
   )
