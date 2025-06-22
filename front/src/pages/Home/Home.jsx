@@ -33,17 +33,23 @@ useEffect(() => {
             locationPoint: [] 
         }
         try {
-            const token = localStorage.getItem("token");
-            await axios.post("http://localhost:3002/reports", newReport, {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
-            });
-          } catch (err) {
-            console.error(err);
-          }
+          const token = localStorage.getItem("token");
+          await axios.post("http://localhost:3002/reports", newReport, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+      
+          // Limpiar campos del formulario
+          setReportName("");
+          setReportDescription("");
+          setReportLocation("");
+      
+          // Traer los reportes nuevamente
+          fetchReports();
+        } catch (err) {
+          console.error(err);
+        }
         
-    }
+    };
 
   return (
     <div>
