@@ -1,14 +1,20 @@
-$color-bg: #f8faff;
+$color-bg: #cfdbf7;
 $color-primary: #0077b6;
 $color-secondary: #023e8a;
 $color-accent: #ff6f61; // coral
 $color-text: #333;
 
 .home-container {
-  padding: 2rem;
+ /* padding: 2rem;
   background-color: $color-bg;
   font-family: 'Segoe UI', sans-serif;
-  color: $color-text;
+  color: $color-text;*/
+  max-width: 900px; // Podés subirlo hasta 1100 si querés más ancho
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: $color-bg; 
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   h1 {
     font-size: 2.5rem;
@@ -52,6 +58,21 @@ $color-text: #333;
       }
     }
   }
+
+  .boton{
+    background-color: $color-accent;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($color-accent, 10%);
+      }
+     }
 
   ul {
     margin-top: 2rem;

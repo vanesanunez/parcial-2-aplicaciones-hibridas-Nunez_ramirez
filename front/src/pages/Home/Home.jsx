@@ -4,7 +4,7 @@ import axios from "axios"
 import useDebounce from '../../hooks/useDebounce'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
-//import '../styles/home.scss';
+import '../../styles/home.scss';
 
 
 const Home = () => {
@@ -112,9 +112,9 @@ useEffect(() => {
     }
 
   return (
-  <div>
+  <div className="home-container"> 
         <h1>Home</h1>
-         <button onClick={() => navigate("/rutas")}>Ir a rutas seguras</button>
+         <button onClick={() => navigate("/rutas")} className="boton">Ir a rutas seguras</button>
 
         <h2>Reportes</h2>
 
