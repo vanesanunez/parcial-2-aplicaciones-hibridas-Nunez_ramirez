@@ -4,8 +4,7 @@ import axios from "axios"
 import useDebounce from '../../hooks/useDebounce'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
-
-//import '../../styles/home.scss';
+//import '../styles/home.scss';
 
 
 const Home = () => {
