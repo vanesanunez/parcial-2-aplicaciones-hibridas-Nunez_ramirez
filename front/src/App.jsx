@@ -14,11 +14,16 @@ function App() {
   
   return (
     <>
-
-    {
-      user?.name ? <h3>Usuario logueado: {user.name}</h3> : <h3>No user</h3>
-    }
-    <Link onClick={() => logoutUser()} to="login">Cerrar sesión</Link>
+      {user?.name ? (
+        <>
+          <h3>Usuario logueado: {user.name}</h3>
+          <Link onClick={logoutUser} to="/login">
+            Cerrar sesión
+          </Link>
+        </>
+      ) : (
+        <h3>No user</h3>
+      )}
 
      <Routes>
       <Route path="/" element={<Home/>}></Route>
