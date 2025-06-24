@@ -4,6 +4,7 @@ import axios from "axios"
 import useDebounce from '../../hooks/useDebounce'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
+import Cookies from "js-cookie"
 // import '../../styles/home.scss';
 
 
@@ -34,32 +35,39 @@ useEffect(() => {
 
     //crear nuevo reporte
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const newReport = {
-            title: reportName,
-            description: reportDescription,
-            location: reportLocation,
-            tags: ["general"], // temporal para cumplir con el campo obligatorio
-            locationPoint: [] 
+      e.preventDefault();
+      const newReport = {
+        title: reportName,
+        description: reportDescription,
+        location: reportLocation,
+        tags: ["general"],
+        locationPoint: []
+      };
+      
+      try {
+        const token = Cookies.get('jwtoken'); // de la cookie
+        if (!token) {
+          return console.error('No hay token. Por favor inicia sesión.');
         }
-        try {
-          const token = localStorage.getItem("token");
-          await axios.post("http://localhost:3002/reports", newReport, {
+    
+        await axios.post(
+          "http://localhost:3002/reports",
+          newReport,
+          {
             headers: { Authorization: `Bearer ${token}` }
-          });
-      
-          // Limpiar campos del formulario
-          setReportName("");
-          setReportDescription("");
-          setReportLocation("");
-      
-          // Traer los reportes nuevamente - actualiza la lista
-          fetchReports();
-        } catch (err) {
-          console.error(err);
-        }
-        
-    }
+          }
+        );
+        // Limpiar campos del formulario
+        setReportName("");
+        setReportDescription("");
+        setReportLocation("");
+        // Traer los reportes nuevamente - actualiza la lista
+        fetchReports();
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  
 
     const handleSearch = async (searchTerm) => {
       try{
