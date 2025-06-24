@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Link} from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
@@ -10,7 +10,7 @@ import { AuthContext } from './context/AuthContext';
 
 function App() {
 
-  const {user} = useContext(AuthContext)
+  const {user, logoutUser} = useContext(AuthContext)
   
   return (
     <>
@@ -18,6 +18,7 @@ function App() {
     {
       user?.name ? <h3>Usuario logueado: {user.name}</h3> : <h3>No user</h3>
     }
+    <Link onClick={() => logoutUser()} to="login">Cerrar sesión</Link>
 
      <Routes>
       <Route path="/" element={<Home/>}></Route>
