@@ -16,7 +16,7 @@ function App() {
     <>
       {user?.name ? (
         <>
-          <h3>Usuario logueado: {user.name}</h3>
+          <h3>Hola, {user.name}</h3>
           <Link onClick={logoutUser} to="/login">
             Cerrar sesión
           </Link>
