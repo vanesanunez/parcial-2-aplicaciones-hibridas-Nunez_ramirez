@@ -292,6 +292,23 @@ function Rutas() {
     }
   };
 
+  const handleDelete = async (id) => {
+  try {
+    const token = localStorage.getItem("token");
+    await axios.delete(`http://localhost:3002/routes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    // Filtrar la lista de rutas para quitar la eliminada
+    setRutas(rutas.filter((ruta) => ruta._id !== id));
+  } catch (error) {
+    console.error("Error al eliminar la ruta:", error.response?.data || error.message);
+    alert("No se pudo eliminar la ruta.");
+  }
+};
+
   return (
     <div>
       <h1>Agregar nueva ruta</h1>
@@ -359,6 +376,8 @@ function Rutas() {
                   Latitud: {ruta.locationPoint[0].lat}, Longitud: {ruta.locationPoint[0].lng}
                 </span>
               )}
+                <br />
+               <button onClick={() => handleDelete(ruta._id)}>Eliminar</button>
               <hr />
             </li>
           ))}
