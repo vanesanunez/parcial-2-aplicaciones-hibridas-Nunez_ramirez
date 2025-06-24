@@ -22,8 +22,13 @@ useEffect(() => {
     }
   }, [auth])
 
+  const logoutUser = () => {
+    setUser(null)
+    Cookies.remove('jwtoken')
+  }
+
     return (
-        <AuthContext.Provider value={{user, setUser, auth}}>
+        <AuthContext.Provider value={{user, setUser, auth, logoutUser}}>
             {children}
         </AuthContext.Provider>
     )
