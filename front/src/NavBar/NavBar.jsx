@@ -14,41 +14,51 @@ const NavBar = () => {
   return (
     <nav className={Style.NavBar}>
 
-<div className={Style.NavBar_logo}>
-  <p>Icono</p>
-</div>
+      <div className={Style.NavBar_logo}>
+        <p>Icono</p>
+      </div>
 
-<button
-  onClick={cambioMenuMovil}
-  className={Style.IconMenuMovil}
-  aria-label="Menú móvil"
->
-  {menuMovil ? (
-    <FontAwesomeIcon icon={faTimes} size="2x" />
-  ) : (
-    <FontAwesomeIcon icon={faBars} size="2x" />
-  )}
-</button>
+      {/* menu hamburguesa */}
+      <button
+        onClick={cambioMenuMovil}
+        className={Style.IconMenuMovil}
+        aria-label="Menú móvil"
+      >
+        {menuMovil ? (
+          <FontAwesomeIcon icon={faTimes} size="2x" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} size="2x" />
+        )}
+      </button>
 
+      {/* Links */}
       <div className={menuMovil ? Style.NavBar_items_Open : Style.NavBar_items}>
+
         <div className={Style.NavBar_links}>
-          <Link to="/home">Inicio</Link>
+          <Link to="/">Inicio</Link>
           <Link to="/reports">Reportes</Link>
           <Link to="/rutas">Rutas</Link>
-          <Link to="/register">Registro</Link>
-          <Link to="/login">Login</Link>
+
+          {/* Mostrar solo si NO hay usuario */}
+          {!user && (
+            <>
+              <Link to="/register">Registro</Link>
+              <Link to="/login">Login</Link>
+            </>
+          )}
         </div>
 
         <div className={Style.NavBar_user}>
           {user ? (
             <>
-              <span>Hola, {user.name}</span>
-              <button onClick={logoutUser}>Cerrar sesión</button>
+              <span>¡Hola, {user.name}!</span>
+              <button onClick={logoutUser}>Logout</button>
             </>
           ) : (
-            <span>No hay usuario</span>
+            <span>No user</span>
           )}
         </div>
+
       </div>
 
     </nav>
@@ -56,3 +66,4 @@ const NavBar = () => {
 }
 
 export default NavBar
+
