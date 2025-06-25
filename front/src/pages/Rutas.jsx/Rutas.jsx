@@ -244,6 +244,9 @@ function Rutas() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
+    const [editMode, setEditMode] = useState(false);
+    const [editId, setEditId] = useState(null);
+
   useEffect(() => {
     const obtenerRutas = async () => {
       try {
@@ -256,6 +259,19 @@ function Rutas() {
 
     obtenerRutas();
   }, []);
+
+  const startEditing = (ruta) => {
+  setEditMode(true);
+  setEditId(ruta._id);
+  setName(ruta.name);
+  setStartPoint(ruta.startPoint);
+  setEndPoint(ruta.endPoint);
+  setDescription(ruta.description);
+  if (ruta.locationPoint.length > 0) {
+    setLat(ruta.locationPoint[0].lat);
+    setLng(ruta.locationPoint[0].lng);
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
