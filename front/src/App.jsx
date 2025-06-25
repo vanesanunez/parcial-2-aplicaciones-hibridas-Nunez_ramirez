@@ -4,7 +4,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register';
 import Rutas from './pages/Rutas.jsx/Rutas';
-import ReportList from './pages/ReportList.jsx/ReportList';
+import Reports from './pages/Reports.jsx/Reports';
 import {useContext} from 'react'
 import { AuthContext } from './context/AuthContext';
 
@@ -27,7 +27,7 @@ function App() {
 
      <Routes>
       <Route path="/" element={<Home/>}></Route>
-      <Route path="/reports/:id" element={<ReportList/>}></Route>
+      <Route path="/reports/:id" element={<Reports/>}></Route>
       <Route path="/register" element={<Register/>} />
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/rutas" element={<Rutas />} />
