@@ -35,9 +35,9 @@ const NavBar = () => {
       <div className={menuMovil ? Style.NavBar_items_Open : Style.NavBar_items}>
 
         <div className={Style.NavBar_links}>
-          <Link to="/">Inicio</Link>
-          <Link to="/reports">Reportes</Link>
-          <Link to="/rutas">Rutas</Link>
+          <Link to="/" onClick={() => setMenuMovil(false)}>Inicio</Link>
+          <Link to="/reports" onClick={() => setMenuMovil(false)}>Reportes</Link>
+          <Link to="/rutas" onClick={() => setMenuMovil(false)}>Rutas</Link>
 
           {/* Mostrar solo si NO hay usuario */}
           {!user && (
