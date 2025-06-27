@@ -1,10 +1,118 @@
-import React from 'react'
+/*import React from 'react'
 
 const Home = () => {
+ 
   return (
-    
-    <h1>Home</h1>
-  )
+    <div className="home-container">
+      <h1>Bienvenida a Vía Segura</h1>
+      <p>Esta API proporciona información colaborativa en tiempo real sobre:</p>
+      <ul>
+        <li><strong>Calles sin iluminación</strong> o con problemas de visibilidad (Reportes).</li>
+        <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>
+        <li><strong>Usuarios</strong> que interactúan con la plataforma.</li>
+      </ul>
+      <h2>¿Qué resolvemos?</h2>
+      <p>
+        Combatimos la inseguridad y la desinformación en la vía pública, ayudando
+        a las personas a desplazarse con mayor tranquilidad.
+      </p>
+
+      
+    </div>
+  );
 }
 
-export default Home
+export default Home */
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+//import "../styles/home.scss";
+
+function Home() {
+  const [rutas, setRutas] = useState([]);
+  const [reportes, setReportes] = useState([]);
+
+  /*  useEffect(() => {
+    const fetchRutas = async () => {
+      try {
+        const response = await axios.get("http://localhost:3002/routes");
+        setRutas(response.data);
+      } catch (error) {
+        console.error("Error al obtener las rutas:", error);
+      }
+    };
+
+    fetchRutas();
+  }, []);*/
+
+  useEffect(() => {
+    const fetchRutasYReportes = async () => {
+      try {
+        const rutasRes = await axios.get("http://localhost:3002/routes");
+        setRutas(rutasRes.data);
+
+        const reportesRes = await axios.get("http://localhost:3002/reports");
+        setReportes(reportesRes.data);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+
+    fetchRutasYReportes();
+  }, []);
+
+  return (
+    <div className="home-container">
+      <h1>Bienvenida a Vía Segura</h1>
+      <p>Esta API proporciona información colaborativa en tiempo real sobre:</p>
+      <ul>
+        <li>
+          <strong>Calles sin iluminación</strong> o con problemas de visibilidad
+          (Reportes).
+        </li>
+        <li>
+          <strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas
+          Seguras).
+        </li>
+        <li>
+          <strong>Usuarios</strong> que interactúan con la plataforma.
+        </li>
+      </ul>
+      <h2>¿Qué resolvemos?</h2>
+      <p>
+        Combatimos la inseguridad y la desinformación en la vía pública,
+        ayudando a las personas a desplazarse con mayor tranquilidad.
+      </p>
+
+      <h2>Últimas rutas compartidas</h2>
+      <div className="cards-container">
+        {rutas.map((ruta) => (
+          <div className="card" key={ruta._id}>
+            <h3>{ruta.name}</h3>
+            <p>
+              <strong>Desde:</strong> {ruta.startPoint}
+            </p>
+            <p>
+              <strong>Hasta:</strong> {ruta.endPoint}
+            </p>
+            <p>{ruta.description}</p>
+          </div>
+        ))}
+      </div>
+      <h2>Últimos reportes registrados</h2>
+      <div className="cards-container">
+        {reportes.map((reporte) => (
+          <div className="card" key={reporte._id}>
+            <h3>{reporte.title}</h3>
+            <p>
+              <strong>Ubicación:</strong> {reporte.location}
+            </p>
+            <p>{reporte.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Home;
