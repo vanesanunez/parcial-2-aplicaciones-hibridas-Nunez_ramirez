@@ -408,6 +408,7 @@ export default Rutas;
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function Rutas() {
   const [rutas, setRutas] = useState([]);
@@ -450,7 +451,7 @@ function Rutas() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("jwtoken");
     const nuevaRuta = {
       name,
       startPoint,
@@ -492,7 +493,7 @@ function Rutas() {
 
   const handleDelete = async (id) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = Cookies.get("jwtoken");
       await axios.delete(`http://localhost:3002/routes/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
