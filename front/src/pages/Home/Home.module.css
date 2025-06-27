@@ -57,7 +57,9 @@ footer {
   text-align: center;
   margin-top: 60px;
   padding: 20px;
-  background-color: #eee;
+  background-color: rgb(80, 80, 247);
   border-top: 1px solid #ccc;
   font-size: 14px;
+  color: whitesmoke;
+  width: 100%;
 }
