@@ -1,0 +1,122 @@
+.reports-page {
+   padding-top: 500px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100vh;
+    background-color: #f7f9fc;
+    overflow: visible;
+   
+  }
+  
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.07);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+    max-width: none; /* que ocupe el grid */
+    margin: 0;
+    
+    &:hover {
+      box-shadow: 3px 3px 18px #f6d7d1;
+    }
+    
+    h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.4rem;
+      color: #085baf;
+    }
+  
+    .description {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      cursor: help;
+    }
+  
+    .location, .date {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.4rem;
+    }
+  
+    .tags {
+      margin-bottom: 1rem;
+  
+      .tag {
+        display: inline-block;
+        background: #ccdff7;
+        color: rgb(28, 28, 28);
+        padding: 0.2rem 0.5rem;
+        margin-right: 0.4rem;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        text-transform: capitalize;
+        user-select: none;
+      }
+    }
+  
+    .card-children {
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      max-width: 100%;
+      padding: 1rem;
+      h2 {
+        font-size: 1.2rem;
+      }
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .autocomplete-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .autocomplete-suggestions li {
+    background-color: #f0f0f0;
+    color: #2a2a2a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+  }
+  
+  .autocomplete-suggestions li:hover {
+    background-color: #f2826d;
+    color: #fff;
+  }
+  

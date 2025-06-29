@@ -1,28 +1,4 @@
-/*import React from 'react'
 
-const Home = () => {
- 
-  return (
-    <div className="home-container">
-      <h1>Bienvenida a Vía Segura</h1>
-      <p>Esta API proporciona información colaborativa en tiempo real sobre:</p>
-      <ul>
-        <li><strong>Calles sin iluminación</strong> o con problemas de visibilidad (Reportes).</li>
-        <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>
-        <li><strong>Usuarios</strong> que interactúan con la plataforma.</li>
-      </ul>
-      <h2>¿Qué resolvemos?</h2>
-      <p>
-        Combatimos la inseguridad y la desinformación en la vía pública, ayudando
-        a las personas a desplazarse con mayor tranquilidad.
-      </p>
-
-      
-    </div>
-  );
-}
-
-export default Home */
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -64,8 +40,8 @@ function Home() {
   return (
        <div className={styles.homeContainer}>
     <section className={styles.intro}>
-        <h1>API Vía Segura</h1>
-        <p>Esta API proporciona información colaborativa en tiempo real sobre:</p>
+        <h1>Vía Segura</h1>
+        <p>Obtené información colaborativa y en tiempo real sobre:</p>
         <ul>
           <li><strong>Calles sin iluminación</strong> o con problemas de visibilidad (Reportes).</li>
           <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>

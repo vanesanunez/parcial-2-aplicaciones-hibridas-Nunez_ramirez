@@ -67,45 +67,41 @@ export const searchByTag = async (req, res) => {
   }
 };
 
-
-// Actualizar reporte (requiere token)
 export const updateReporte = async (req, res) => {
   try {
     const reportId = req.params.id;
-    const userId = req.user.id; // ID usuario que hace la solicitud
+    // const userId = req.user.id; // Ya no hace falta
 
-    // Buscamos el reporte y verificamos que pertenezca al usuario
     const report = await Report.findById(reportId);
     if (!report) return res.status(404).json({ message: "Reporte no encontrado" });
-    if (report.userId !== userId) return res.status(403).json({ message: "No autorizado para actualizar este reporte" });
 
-    // Actualizamos con los datos enviados
+
     const updatedReport = await Report.findByIdAndUpdate(reportId, req.body, { new: true });
 
     res.json(updatedReport);
   } catch (error) {
+    console.error("Error actualizando reporte:", error);
     res.status(500).json({ error: error.message });
   }
 };
 
-// Eliminar reporte (requiere token)
 export const deleteReporte = async (req, res) => {
   try {
     const reportId = req.params.id;
-    const userId = req.user.id;
 
-    // Buscamos el reporte y verificamos propiedad
     const report = await Report.findById(reportId);
     if (!report) return res.status(404).json({ message: "Reporte no encontrado" });
-    if (report.userId !== userId) return res.status(403).json({ message: "No autorizado para eliminar este reporte" });
 
     await Report.findByIdAndDelete(reportId);
 
     res.json({ message: "Reporte eliminado con éxito" });
   } catch (error) {
+    console.error("Error eliminando reporte:", error);
     res.status(500).json({ error: error.message });
   }
 };
+
+
 
 //Nuevo método para búsqueda 
 // Buscar reportes por título

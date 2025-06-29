@@ -1,169 +1,200 @@
-import React, {useState, useEffect} from 'react'
-import axios from "axios"
-
-import useDebounce from '../../hooks/useDebounce'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
-import Cookies from "js-cookie"
-// import '../../styles/home.scss';
-
+import Cookies from "js-cookie";
+import Card from "../../components/Card";
+import Button from "../../components/Button";
 
 const Reports = () => {
-    const navigate = useNavigate();
-    const [reports, setReports] = useState([])
-    const [reportName, setReportName] = useState("")
-    const [reportDescription, setReportDescription] = useState("")
-    const [reportLocation, setReportLocation] = useState("")
-    const [search, setSearch] = useState("")
-    const [suggestions, setSuggestions] = useState([])
-    const debouncedSearch = useDebounce(search, 1000)
+  const navigate = useNavigate();
+  const [reports, setReports] = useState([]);
+  const [reportName, setReportName] = useState("");
+  const [reportDescription, setReportDescription] = useState("");
+  const [reportLocation, setReportLocation] = useState("");
+  const [search, setSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const debouncedSearch = useDebounce(search, 1000);
 
   //traer todos los reportes (no requiere token de autenticación)
-const fetchReports = async () => {
-  try {
-   const res = await axios.get("http://localhost:3002/reports");
-   console.log(res)
-   setReports(res.data)
-  }catch(err){
-    console.error(err)
-  }
-}
-useEffect(() => {
-  fetchReports()
-}, [])
-
-
-    //crear nuevo reporte
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const newReport = {
-        title: reportName,
-        description: reportDescription,
-        location: reportLocation,
-        tags: ["general"],
-        locationPoint: []
-      };
-      
-      try {
-        const token = Cookies.get('jwtoken'); // de la cookie
-        if (!token) {
-          return console.error('No hay token. Por favor inicia sesión.');
-        }
-    
-        await axios.post(
-          "http://localhost:3002/reports",
-          newReport,
-          {
-            headers: { Authorization: `Bearer ${token}` }
-          }
-        );
-        // Limpiar campos del formulario
-        setReportName("");
-        setReportDescription("");
-        setReportLocation("");
-        // Traer los reportes nuevamente - actualiza la lista
-        fetchReports();
-      } catch (err) {
-        console.error(err);
-      }
-    };
-  
-
-    const handleSearch = async (searchTerm) => {
-      try{
-        const res = await axios.get("http://localhost:3002/reports/search", {
-          params: {title: searchTerm}
-        });
-        setReports(res.data)
-        setSuggestions([])
-      }catch(err){
-        console.error(err)
-      }
+  const fetchReports = async () => {
+    try {
+      const res = await axios.get("http://localhost:3002/reports");
+      console.log(res);
+      setReports(res.data);
+    } catch (err) {
+      console.error(err);
     }
-    useEffect(() => {
-      if(debouncedSearch){
-          // fetch
-          fetchSuggestions(debouncedSearch)
-      }else{
-          setSuggestions([])
+  };
+  useEffect(() => {
+    fetchReports();
+  }, []);
+
+  //crear nuevo reporte
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newReport = {
+      title: reportName,
+      description: reportDescription,
+      location: reportLocation,
+      tags: ["general"],
+      locationPoint: [],
+    };
+
+    try {
+      const token = Cookies.get("jwtoken"); // de la cookie
+      if (!token) {
+        return console.error("No hay token. Por favor inicia sesión.");
       }
-  }, [debouncedSearch])
+
+      await axios.post("http://localhost:3002/reports", newReport, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      // Limpiar campos del formulario
+      setReportName("");
+      setReportDescription("");
+      setReportLocation("");
+      // Traer los reportes nuevamente - actualiza la lista
+      fetchReports();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSearch = async (searchTerm) => {
+    try {
+      const res = await axios.get("http://localhost:3002/reports/search", {
+        params: { title: searchTerm },
+      });
+      setReports(res.data);
+      setSuggestions([]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    if (debouncedSearch) {
+      // fetch
+      fetchSuggestions(debouncedSearch);
+    } else {
+      setSuggestions([]);
+    }
+  }, [debouncedSearch]);
 
   const fetchSuggestions = async (searchTeam) => {
-      try{
-          const res = await axios.get("http://localhost:3002/reports/search", {
-              params: {title: searchTeam}
-          });
-          setSuggestions(res.data)
-      }catch(err){
-          console.error(err)
-      }
-  }
-    
-
-    const handleSearchChange = async (e) => {
-      const value = e.target.value;
-      setSearch(value);
-
-      // if(value){
-      //   try{
-      //     const res = await axios.get("http://localhost:3002/reports/search", {
-      //       params: {title:  value}
-      //     });
-      //     setSuggestions(res.data) //muestra sugerencias
-      //   }catch(err){
-      //     console.error(err)
-      //   }
-      // }else{
-      //   setSuggestions([])
-      // }
+    try {
+      const res = await axios.get("http://localhost:3002/reports/search", {
+        params: { title: searchTeam },
+      });
+      setSuggestions(res.data);
+    } catch (err) {
+      console.error(err);
     }
+  };
+
+  const handleSearchChange = async (e) => {
+    const value = e.target.value;
+    setSearch(value);
+
+    // if(value){
+    //   try{
+    //     const res = await axios.get("http://localhost:3002/reports/search", {
+    //       params: {title:  value}
+    //     });
+    //     setSuggestions(res.data) //muestra sugerencias
+    //   }catch(err){
+    //     console.error(err)
+    //   }
+    // }else{
+    //   setSuggestions([])
+    // }
+  };
 
   return (
-  <div className="home-container"> 
-        
-         <button onClick={() => navigate("/rutas")} className="boton">Ir a rutas seguras</button>
-
+    <div className="reports-page">
+      <div className="home-container">
         <h2>Reportes</h2>
+        {reports.length === 0 && <p>No hay reportes aún.</p>}
 
-    <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='Título' value={reportName} onChange={(e) => setReportName(e.target.value)}/>
-        <input type="text" placeholder='Descripción' value={reportDescription} onChange={(e) => setReportDescription(e.target.value)}/>
-        <input type="text" placeholder='Ubicación' value={reportLocation} onChange={(e) => setReportLocation(e.target.value)}/>
-        <button type='submit'>Agregar reporte</button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Título"
+            value={reportName}
+            onChange={(e) => setReportName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Descripción"
+            value={reportDescription}
+            onChange={(e) => setReportDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Ubicación"
+            value={reportLocation}
+            onChange={(e) => setReportLocation(e.target.value)}
+          />
+          <Button type="submit" className="btn-primary">
+            Agregar reporte
+          </Button>
         </form>
 
-  {/*form search */}
-  <form onSubmit={(e) => {e.preventDefault(); handleSearch(search)}}>
-    <input type="text"placeholder='buscar por nombre' value={search} onChange={handleSearchChange}/>
-    <button type='submit'>Buscar</button>
-    {
-      suggestions.length > 0 && (
-        <ul className='autocomplete-suggestions'>
-          {
-            suggestions.map((suggestion) => (
-              <li key={suggestion._id}>{suggestion.title}</li>
-            ))
-          }
-        </ul>
-      )
-  }
-  
-  </form>
+        {/*form search */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch(search);
+          }}
+        >
+          <input
+            type="text"
+            placeholder="buscar por nombre"
+            value={search}
+            onChange={handleSearchChange}
+          />
+          <Button type="submit" className="btn-primary">
+            Buscar
+          </Button>
+          {suggestions.length > 0 && (
+            <ul className="autocomplete-suggestions">
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion._id}
+                  onClick={() => {
+                    setSearch(suggestion.title);
+                    handleSearch(suggestion.title);
+                    setSuggestions([]);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  {suggestion.title}
+                </li>
+                // <li key={suggestion._id}>{suggestion.title}</li>
+              ))}
+            </ul>
+          )}
+        </form>
 
-  <ul>
-        {reports.map((report) => (
-          <li key={report._id}>
-            <Link to={`/reports/${report._id}`}>{report.title} - Detalle</Link>
-            
-            </li>
-        ))}
-      </ul>
-      
+        <div className="card-grid">
+          {reports.map((report) => (
+            <Card
+              key={report._id}
+              title={report.title}
+              description={report.description}
+              location={report.location}
+              date={report.createdAt}
+              tags={report.tags}
+            >
+              <Button onClick={() => navigate(`/reports/${report._id}`)}>
+                Ver Detalles
+              </Button>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-</div>
-    
-  )
-}
-
-export default Reports
+export default Reports;
