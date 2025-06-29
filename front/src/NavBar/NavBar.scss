@@ -1,5 +1,5 @@
 .NavBar {
-  position: fixed; // Fijo en la parte superior
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
@@ -13,6 +13,7 @@
   box-sizing: border-box;
   z-index: 1000;
   font-family: Arial, sans-serif;
+  
 }
 
 .NavBar_logo {

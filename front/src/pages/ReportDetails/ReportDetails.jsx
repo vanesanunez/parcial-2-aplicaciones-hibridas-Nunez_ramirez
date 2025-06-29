@@ -32,7 +32,7 @@ const ReportDetails = () => {
     fetchReport();
   }, [id]);
 
-  // guardar el reporte (desde modal)
+  // guardar el reporte (desde la modal)
   const handleReportSaved = () => {
     fetchReport(); 
     setShowModal(false); 
@@ -67,14 +67,14 @@ const ReportDetails = () => {
       <p>Descripción: {report.description}</p>
       <p>Ubicación: {report.location}</p>
 
-  <Button onClick={() => setShowModal(true)} className="btn-primary" style={{ marginRight: '1rem' }}>
+  <Button  onClick={() => setShowModal(true)} className="btn-primary"  >
   Editar
 </Button>
 <Button onClick={handleDelete} className="btn-danger">
   Eliminar
 </Button>
 
-      {/* Modal sólo se abre al clickear editar */}
+     
       {showModal && (
         <ReportModal
           report={report}
