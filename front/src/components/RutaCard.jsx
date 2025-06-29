@@ -8,11 +8,7 @@ const RutaCard = ({ ruta, onEdit, onDelete }) => {
       <p className="description">{ruta.description}</p>
       <p className="location">Desde: {ruta.startPoint}</p>
       <p className="location">Hasta: {ruta.endPoint}</p>
-      {ruta.locationPoint?.length > 0 && (
-        <p className="location">
-          Latitud: {ruta.locationPoint[0].lat}, Longitud: {ruta.locationPoint[0].lng}
-        </p>
-      )}
+    
       <div className="card-children">
         <Button className="btn-primary" onClick={onEdit}>
           Editar

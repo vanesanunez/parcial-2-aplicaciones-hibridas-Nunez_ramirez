@@ -84,12 +84,7 @@ function Home() {
         </div>
       </section>
 
-       <footer className={styles.footer}>
-        <p><strong>Nombre y Apellido:</strong> Tatiana Ramirez - Vanesa Nuñez</p>
-        <p><strong>Materia:</strong> Aplicaciones Híbridas</p>
-        <p><strong>Docente:</strong> Prof. Camila Belén Marcos Galban</p>
-        <p><strong>Comisión:</strong> dwn4av</p>
-      </footer>
+     
       
     </div>
   );

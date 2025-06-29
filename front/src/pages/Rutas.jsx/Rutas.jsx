@@ -410,6 +410,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import RutaModal from "../../components/RutaModal";
+import RutaCard from "../../components/RutaCard";
+import Button from "../../components/Button";
+import "../../styles/rutas.scss";
 
 function Rutas() {
   const [rutas, setRutas] = useState([]);
@@ -529,7 +532,7 @@ function Rutas() {
   };
 
   return (
-    <div>
+    <div className="page-container">
       <h1>{editMode ? "Editar ruta" : "Agregar nueva ruta"}</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -559,51 +562,27 @@ function Rutas() {
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
-        <input
-          type="number"
-          placeholder="Latitud"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-          step="any"
-          required
-        />
-        <input
-          type="number"
-          placeholder="Longitud"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-          step="any"
-          required
-        />
+
         <button type="submit">
           {editMode ? "Guardar cambios" : "Guardar ruta"}
         </button>
       </form>
 
+
       <h2>Rutas Seguras</h2>
       {rutas.length === 0 ? (
         <p>No hay rutas disponibles.</p>
       ) : (
-        <ul>
+        <div className="card-grid">
           {rutas.map((ruta) => (
-            <li key={ruta._id}>
-              <strong>{ruta.name}</strong> <br />
-              Desde: {ruta.startPoint} <br />
-              Hasta: {ruta.endPoint} <br />
-              Descripción: {ruta.description} <br />
-              {ruta.locationPoint.length > 0 && (
-                <span>
-                  Latitud: {ruta.locationPoint[0].lat}, Longitud:{" "}
-                  {ruta.locationPoint[0].lng}
-                </span>
-              )}
-              <br />
-              <button onClick={() => handleDelete(ruta._id)}>Eliminar</button>
-              <button onClick={() => startEditing(ruta)}>Editar</button>
-              <hr />
-            </li>
+            <RutaCard
+              key={ruta._id}
+              ruta={ruta}
+              onEdit={() => startEditing(ruta)}
+              onDelete={() => handleDelete(ruta._id)}
+            />
           ))}
-        </ul>
+        </div>
       )}
       {showModal && selectedRuta && (
         <RutaModal
