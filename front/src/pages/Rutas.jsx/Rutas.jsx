@@ -410,6 +410,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import RutaModal from "../../components/RutaModal";
+import Button from "../../components/Button";
 
 function Rutas() {
   const [rutas, setRutas] = useState([]);
@@ -559,22 +560,7 @@ function Rutas() {
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
-        <input
-          type="number"
-          placeholder="Latitud"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-          step="any"
-          required
-        />
-        <input
-          type="number"
-          placeholder="Longitud"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-          step="any"
-          required
-        />
+      
         <button type="submit">
           {editMode ? "Guardar cambios" : "Guardar ruta"}
         </button>

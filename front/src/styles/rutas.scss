@@ -1,7 +1,21 @@
 .page-container {
-  padding-top: 40rem; 
+ /* padding-top: 40rem; 
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
+  font-family: Arial, sans-serif;*/
+    max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem; // arriba, laterales, abajo
   font-family: Arial, sans-serif;
+  padding-top: 40rem;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
