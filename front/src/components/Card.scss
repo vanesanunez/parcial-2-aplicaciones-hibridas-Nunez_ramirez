@@ -95,4 +95,28 @@
       }
     }
   }
+  .autocomplete-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .autocomplete-suggestions li {
+    background-color: #f0f0f0;
+    color: #2a2a2a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+  }
+  
+  .autocomplete-suggestions li:hover {
+    background-color: #f2826d;
+    color: #fff;
+  }
   
