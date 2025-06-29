@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import axios from "axios"
-
 import useDebounce from '../../hooks/useDebounce'
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"
+import Card from '../../components/Card';
+import Button from '../../components/Button';
 
 
 
 const Reports = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
     const [reports, setReports] = useState([])
     const [reportName, setReportName] = useState("")
     const [reportDescription, setReportDescription] = useState("")
@@ -120,23 +120,23 @@ useEffect(() => {
     }
 
   return (
-  <div className="home-container"> 
-        
-         <button onClick={() => navigate("/rutas")} className="boton">Ir a rutas seguras</button>
-
-        <h2>Reportes</h2>
+  
+  <div className="reports-page"> 
+  <div className='home-container'>
+  <h2>Reportes</h2>
+     {reports.length === 0 && <p>No hay reportes aún.</p>}
 
     <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Título' value={reportName} onChange={(e) => setReportName(e.target.value)}/>
         <input type="text" placeholder='Descripción' value={reportDescription} onChange={(e) => setReportDescription(e.target.value)}/>
         <input type="text" placeholder='Ubicación' value={reportLocation} onChange={(e) => setReportLocation(e.target.value)}/>
-        <button type='submit' className="btn-primary">Agregar reporte</button>
+        <Button type='submit' className="btn-primary">Agregar reporte</Button>
         </form>
 
   {/*form search */}
   <form onSubmit={(e) => {e.preventDefault(); handleSearch(search)}}>
     <input type="text"placeholder='buscar por nombre' value={search} onChange={handleSearchChange}/>
-    <button type='submit' className="btn-primary">Buscar</button>
+    <Button type='submit' className="btn-primary">Buscar</Button>
     {
       suggestions.length > 0 && (
         <ul className='autocomplete-suggestions'>
@@ -148,22 +148,30 @@ useEffect(() => {
         </ul>
       )
   }
-  
   </form>
-
-  <ul>
-        {reports.map((report) => (
-          <li key={report._id}>
-            <Link to={`/reports/${report._id}`}>{report.title} - Detalles</Link>
-            
-            </li>
-        ))}
-      </ul>
-      
-
+  
+  <div className="card-grid">
+  {reports.map((report) => (
+    <Card
+      key={report._id}
+      title={report.title}
+      description={report.description}
+      location={report.location}
+      date={report.createdAt}
+      tags={report.tags}
+    >
+      <Button onClick={() => navigate(`/reports/${report._id}`)}>
+        Ver Detalles
+      </Button>
+    </Card>
+  ))}
 </div>
-    
-  )
-}
+  </div>
+  
+  </div>
+  
+   
+  );
+};
 
-export default Reports
+export default Reports;

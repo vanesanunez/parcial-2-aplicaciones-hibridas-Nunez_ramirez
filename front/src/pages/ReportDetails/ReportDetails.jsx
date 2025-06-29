@@ -67,12 +67,12 @@ const ReportDetails = () => {
       <p>Descripción: {report.description}</p>
       <p>Ubicación: {report.location}</p>
 
-      <button onClick={() => setShowModal(true)} className="btn-primary" style={{ marginRight: '1rem' }}>
+  <Button onClick={() => setShowModal(true)} className="btn-primary" style={{ marginRight: '1rem' }}>
   Editar
-</button>
-<button onClick={handleDelete} className="btn-danger">
+</Button>
+<Button onClick={handleDelete} className="btn-danger">
   Eliminar
-</button>
+</Button>
 
       {/* Modal sólo se abre al clickear editar */}
       {showModal && (
