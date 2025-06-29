@@ -7,6 +7,7 @@ import Register from './pages/Register/Register'
 import Rutas from './pages/Rutas.jsx/Rutas'
 import Reports from './pages/Reports.jsx/Reports'
 import ReportDetails from './pages/ReportDetails/ReportDetails'
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/rutas" element={<Rutas />} />
       </Routes>
+
+      <Footer />
     </>
   )
 }
