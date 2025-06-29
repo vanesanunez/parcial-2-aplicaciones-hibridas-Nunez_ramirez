@@ -66,6 +66,7 @@ const ReportDetails = () => {
       <h2>Reporte: {report.title}</h2>
       <p>Descripción: {report.description}</p>
       <p>Ubicación: {report.location}</p>
+      <p>Fecha: {report.date.substring(0,10)}</p>
 
   <Button  onClick={() => setShowModal(true)} className="btn-primary"  >
   Editar

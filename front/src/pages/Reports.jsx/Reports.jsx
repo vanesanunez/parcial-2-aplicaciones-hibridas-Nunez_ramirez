@@ -185,6 +185,7 @@ const Reports = () => {
               location={report.location}
               date={report.createdAt}
               tags={report.tags}
+              
             >
               <Button onClick={() => navigate(`/reports/${report._id}`)}>
                 Ver Detalles
