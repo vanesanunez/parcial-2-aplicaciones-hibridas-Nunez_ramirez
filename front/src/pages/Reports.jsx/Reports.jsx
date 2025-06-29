@@ -5,7 +5,7 @@ import useDebounce from '../../hooks/useDebounce'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import Cookies from "js-cookie"
-// import '../../styles/home.scss';
+
 
 
 const Reports = () => {
@@ -99,7 +99,7 @@ useEffect(() => {
           console.error(err)
       }
   }
-    
+  
 
     const handleSearchChange = async (e) => {
       const value = e.target.value;
@@ -130,13 +130,13 @@ useEffect(() => {
         <input type="text" placeholder='Título' value={reportName} onChange={(e) => setReportName(e.target.value)}/>
         <input type="text" placeholder='Descripción' value={reportDescription} onChange={(e) => setReportDescription(e.target.value)}/>
         <input type="text" placeholder='Ubicación' value={reportLocation} onChange={(e) => setReportLocation(e.target.value)}/>
-        <button type='submit'>Agregar reporte</button>
+        <button type='submit' className="btn-primary">Agregar reporte</button>
         </form>
 
   {/*form search */}
   <form onSubmit={(e) => {e.preventDefault(); handleSearch(search)}}>
     <input type="text"placeholder='buscar por nombre' value={search} onChange={handleSearchChange}/>
-    <button type='submit'>Buscar</button>
+    <button type='submit' className="btn-primary">Buscar</button>
     {
       suggestions.length > 0 && (
         <ul className='autocomplete-suggestions'>
@@ -154,7 +154,7 @@ useEffect(() => {
   <ul>
         {reports.map((report) => (
           <li key={report._id}>
-            <Link to={`/reports/${report._id}`}>{report.title} - Detalle</Link>
+            <Link to={`/reports/${report._id}`}>{report.title} - Detalles</Link>
             
             </li>
         ))}

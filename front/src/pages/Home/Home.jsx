@@ -64,8 +64,8 @@ function Home() {
   return (
        <div className={styles.homeContainer}>
     <section className={styles.intro}>
-        <h1>API Vía Segura</h1>
-        <p>Esta API proporciona información colaborativa en tiempo real sobre:</p>
+        <h1>Vía Segura</h1>
+        <p>Obtené información colaborativa y en tiempo real sobre:</p>
         <ul>
           <li><strong>Calles sin iluminación</strong> o con problemas de visibilidad (Reportes).</li>
           <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>
