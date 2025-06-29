@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 
 const Reports = () => {
   const navigate = useNavigate();
+  const [allReports, setAllReports] = useState([]);
   const [reports, setReports] = useState([]);
   const [reportName, setReportName] = useState("");
   const [reportDescription, setReportDescription] = useState("");
@@ -15,20 +16,32 @@ const Reports = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const debouncedSearch = useDebounce(search, 1000);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
+  
 
   //traer todos los reportes (no requiere token de autenticación)
   const fetchReports = async () => {
     try {
       const res = await axios.get("http://localhost:3002/reports");
       console.log(res);
-      setReports(res.data);
+      setAllReports(res.data);
+      // setReports(res.data);
     } catch (err) {
       console.error(err);
     }
   };
+
+// Mostrar los reportes de la página actual
+useEffect(() => {
+  const start = (page - 1) * limit;
+  const end = start + limit;
+  setReports(allReports.slice(start, end));
+}, [page, limit, allReports]);
+
   useEffect(() => {
     fetchReports();
-  }, []);
+  }, [page, limit, allReports]);
 
   //crear nuevo reporte
   const handleSubmit = async (e) => {
@@ -66,7 +79,8 @@ const Reports = () => {
       const res = await axios.get("http://localhost:3002/reports/search", {
         params: { title: searchTerm },
       });
-      setReports(res.data);
+      setAllReports(res.data);
+      setPage(1);
       setSuggestions([]);
     } catch (err) {
       console.error(err);
@@ -175,6 +189,22 @@ const Reports = () => {
             </ul>
           )}
         </form>
+        
+        <div>
+         <p>Mostrando resultados por página:</p>
+         <select
+            value={limit}
+            onChange={(e) => {
+              setLimit(Number(e.target.value));
+              setPage(1); // resetear a página 1 al cambiar límite
+            }}
+           
+          >
+            <option value={3}>3 </option>
+            <option value={6}>6 por página</option>
+            <option value={9}>9 por página</option>
+          </select>
+        </div>
 
         <div className="card-grid">
           {reports.map((report) => (
@@ -193,6 +223,19 @@ const Reports = () => {
             </Card>
           ))}
         </div>
+        <div>
+          <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
+            Anterior
+          </Button>
+          <Button
+            onClick={() => setPage(page + 1)}
+            disabled={page * limit >= allReports.length}
+          >
+            Siguiente
+          </Button>
+        </div>
+      
+       
       </div>
     </div>
   );
