@@ -80,3 +80,18 @@ export const deleteRoute = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Buscar rutas por nombre
+/*export const searchRoutesByName = async (req, res) => {
+  try {
+    const { name } = req.query;
+    if (!name) return res.status(400).json({ error: "No se proporcionó nombre para buscar" });
+
+    const regex = new RegExp(name, "i"); // insensible a mayúsculas
+    const rutas = await Route.find({ name: regex });
+
+    res.json(rutas);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};*/
