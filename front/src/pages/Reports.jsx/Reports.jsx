@@ -207,7 +207,7 @@ const Reports = () => {
         </select>
       </div>
 
-      {/* Aquí los controles de paginación, fuera de las cards */}
+     
       <div className="pagination-controls">
         <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
           Anterior

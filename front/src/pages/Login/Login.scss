@@ -1,17 +1,17 @@
 .login-page {
   display: flex;
-  flex-direction: row; // Imagen a la izquierda
+  flex-direction: row; 
   height: 100vh;
-  padding-top: 250px;
+  padding-top: 25rem;
   font-family: 'Inter', sans-serif;
 
   .login-image-container {
     flex: 1;
     background-image: url('/assets/login-image.png');
     background-size: cover;
-    background-position: center top; // Centrado, no cortado arriba
+    background-position: center top; 
     background-repeat: no-repeat;
-    min-height: 100vh;
+    
   }
 
   .login-form-container {
