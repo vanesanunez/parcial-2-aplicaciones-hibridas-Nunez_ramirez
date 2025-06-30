@@ -4,7 +4,7 @@
   flex-direction: row;
   width: 100%;
   height: 100vh;
-  padding-top: 25rem; // compensación por navbar fijo
+  padding-top: 25rem; 
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 
@@ -65,11 +65,11 @@
         padding: 0.75rem 1rem;
         background-color: #3082e3;
         color: white;
-        border: 1px solid transparent; /* iguala borde invisible */
+        border: 1px solid transparent; 
         border-radius: 6px;
         font-weight: bold;
         cursor: pointer;
-        box-sizing: border-box; /* igual cálculo de ancho */
+        box-sizing: border-box; 
         transition: background-color 0.3s ease;
 
         &:hover {

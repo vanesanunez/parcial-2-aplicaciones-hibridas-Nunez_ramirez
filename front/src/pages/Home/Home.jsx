@@ -6,18 +6,6 @@ function Home() {
   const [rutas, setRutas] = useState([]);
   const [reportes, setReportes] = useState([]);
 
-  /*  useEffect(() => {
-    const fetchRutas = async () => {
-      try {
-        const response = await axios.get("http://localhost:3002/routes");
-        setRutas(response.data);
-      } catch (error) {
-        console.error("Error al obtener las rutas:", error);
-      }
-    };
-
-    fetchRutas();
-  }, []);*/
 
   useEffect(() => {
     const fetchRutasYReportes = async () => {
@@ -37,24 +25,7 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      {/* <section className={styles.intro}>
-        <h1>Vía Segura</h1>
-        <p>Obtené información colaborativa y en tiempo real sobre:</p>
-        <ul>
-          <li><strong>Calles sin iluminación</strong> o con problemas de visibilidad (Reportes).</li>
-          <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>
-          <li><strong>Usuarios</strong> que interactúan con la plataforma.</li>
-        </ul>
-      </section>
-     
-
-      <section className={styles.solucion}>
-        <h2>¿Qué resolvemos?</h2>
-        <p>
-          Combatimos la inseguridad y la desinformación en la vía pública,
-          ayudando a las personas a desplazarse con mayor tranquilidad.
-        </p>
-      </section> */}
+   
 
       <section className={styles.intro}>
         <div className={styles.introImage}>
