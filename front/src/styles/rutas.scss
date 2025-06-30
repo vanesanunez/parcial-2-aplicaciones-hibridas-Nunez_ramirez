@@ -59,7 +59,10 @@ form textarea {
   }
 
   .card-children {
-    margin-top: 1rem;
+     margin-top: 1rem;
+     display: flex;
+     gap: 0.75rem;
+     justify-content: center;
   }
 
   &:hover {

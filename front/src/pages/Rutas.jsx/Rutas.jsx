@@ -563,9 +563,9 @@ function Rutas() {
           required
         ></textarea>
 
-        <button type="submit">
+        <Button type="submit" className="btn-primary">
           {editMode ? "Guardar cambios" : "Guardar ruta"}
-        </button>
+        </Button>
       </form>
 
 
