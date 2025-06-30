@@ -4,6 +4,7 @@ import Cookies from "js-cookie"
 import axios from "axios"; 
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate()
@@ -27,35 +28,68 @@ const Login = () => {
         setError(error.response?.data?.message || "Error en el login")
       })
   }
-
   return (
-    <div>
-    <h2>Iniciar sesión</h2>
-    <form>
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          value={userData.email}
-          onChange={(e) => setUserData({...userData, email: e.target.value})}
-        />
+    <div className="login-page">
+      <div className="login-image-container"></div>
+  
+      <div className="login-form-container">
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              value={userData.email}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              value={userData.password}
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
+            />
+          </div>
+          <button type="submit">Login</button>
+          {error && <p className="error-message">{error}</p>}
+        </form>
       </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          value={userData.password}
-          onChange={(e) => setUserData({...userData, password: e.target.value})}
-        />
-      </div>
-      <button onClick={handleLogin}>Login</button>
-      {
-        error &&  <p>{error}</p>
-      }
+    </div>
+  );
+  
+  // return (
+  //   <div>
+  //   <h2>Iniciar sesión</h2>
+  //   <form>
+  //     <div>
+  //       <label>Email</label>
+  //       <input
+  //         type="email"
+  //         value={userData.email}
+  //         onChange={(e) => setUserData({...userData, email: e.target.value})}
+  //       />
+  //     </div>
+  //     <div>
+  //       <label>Password</label>
+  //       <input
+  //         type="password"
+  //         value={userData.password}
+  //         onChange={(e) => setUserData({...userData, password: e.target.value})}
+  //       />
+  //     </div>
+  //     <button onClick={handleLogin}>Login</button>
+  //     {
+  //       error &&  <p>{error}</p>
+  //     }
      
-    </form>
-  </div>
-  )
+  //   </form>
+  // </div>
+  // )
 }
 
 export default Login;
