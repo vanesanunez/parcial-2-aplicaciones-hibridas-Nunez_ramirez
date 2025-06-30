@@ -1,116 +1,4 @@
 
-
-// .login-page {
-//   display: flex;
-//   flex-direction: row;
-//   width: 100%;
-//   height: 100vh;
-//   padding-top: 25rem; // compensación por navbar fijo
-//   font-family: 'Inter', sans-serif;
-//   overflow-x: hidden;
-
-//   .login-image-container {
-//     flex: 1;
-//     background-image: url('/assets/login-image.png');
-//     background-size: cover;
-//     background-position: center top;
-//     background-repeat: no-repeat;
-//   }
-
-//   .login-form-container {
-//     flex: 1;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 3rem;
-//     background-color: #ffffff;
-
-//     h2 {
-//       margin-bottom: 1.5rem;
-//       font-size: 2rem;
-//       color: #085baf;
-//       text-align: center;
-//     }
-
-//     form {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       width: 100%;
-//       max-width: 400px;
-//       gap: 1rem;
-
-//       label {
-//         align-self: flex-start;
-//         font-weight: 500;
-//         color: #2a2a2a;
-//       }
-
-//       input,
-//       button {
-//         width: 100%;
-//         padding: 0.75rem 1rem;
-//         border-radius: 6px;
-//         border: 1px solid #ccc;
-//         font-size: 1rem;
-//         box-sizing: border-box;
-//       }
-
-//       button {
-//         margin-top: 1rem;
-//         background-color: #3082e3;
-//         color: white;
-//         border: none;
-//         font-weight: bold;
-//         cursor: pointer;
-//         transition: background-color 0.3s ease;
-
-//         &:hover {
-//           background-color: #085baf;
-//         }
-//       }
-
-//       .error-message {
-//         color: red;
-//         font-size: 0.9rem;
-//         margin-top: 0.5rem;
-//         text-align: center;
-//       }
-//     }
-//   }
-
-//   /*  MOBILE */
-//   @media (max-width: 768px) {
-//     flex-direction: column;
-
-//     .login-image-container {
-//       display: none;
-//     }
-
-//     .login-form-container {
-//       width: 100%;
-//       padding: 1rem;
-//       padding-top: 2rem;
-//       padding-bottom: 4rem;
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       justify-content: center;
-
-//       form {
-//         width: 100%;
-//         max-width: 360px;
-//         margin: 0 auto;
-
-//         input,
-//         button {
-//           width: 100%;
-//         }
-//       }
-//     }
-//   }
-// }
 .login-page {
   display: flex;
   flex-direction: row;
@@ -124,7 +12,7 @@
     flex: 1;
     background-image: url('/assets/login-image.png');
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
   }
 
@@ -134,7 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 2rem;
     background-color: #ffffff;
 
     h2 {

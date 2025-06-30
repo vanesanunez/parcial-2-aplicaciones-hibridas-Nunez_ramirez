@@ -11,8 +11,8 @@
   overflow-y: auto;
   font-family: 'Inter', sans-serif;
 
-  @media (max-width: 768px) {
-    padding-top: 50rem;
+  @media (max-width: 601px) {
+    padding-top: 60rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -85,6 +85,7 @@ form {
 @media (max-width: 550px) {
   form {
     flex-direction: column;
+  
 
     input {
       flex: 1 1 100%;
