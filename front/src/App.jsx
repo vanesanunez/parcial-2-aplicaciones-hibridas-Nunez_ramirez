@@ -8,6 +8,7 @@ import Rutas from './pages/Rutas.jsx/Rutas'
 import Reports from './pages/Reports.jsx/Reports'
 import ReportDetails from './pages/ReportDetails/ReportDetails'
 import Footer from "./components/Footer";
+import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
 
 function App() {
   return (
@@ -15,11 +16,14 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/reports/:id" element={<ReportDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+      <Route element={<ProtectedRoutes/>}>
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/reports/:id" element={<ReportDetails />} />  
         <Route path="/rutas" element={<Rutas />} />
+      </Route>
       </Routes>
 
       <Footer />
