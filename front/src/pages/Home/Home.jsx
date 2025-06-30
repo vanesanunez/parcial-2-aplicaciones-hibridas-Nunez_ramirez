@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <section className={styles.intro}>
+      {/* <section className={styles.intro}>
         <h1>Vía Segura</h1>
         <p>Obtené información colaborativa y en tiempo real sobre:</p>
         <ul>
@@ -54,6 +54,48 @@ function Home() {
           Combatimos la inseguridad y la desinformación en la vía pública,
           ayudando a las personas a desplazarse con mayor tranquilidad.
         </p>
+      </section> */}
+
+      <section className={styles.intro}>
+        <div className={styles.introImage}>
+          <img
+            src="/assets/inicio-img.png"
+            alt="Personas conectadas colaborando"
+          />
+        </div>
+        <div className={styles.introText}>
+          <h1>Vía Segura</h1>
+          <p>Obtené información colaborativa y en tiempo real sobre:</p>
+          <ul>
+            <li>
+              <strong>Calles sin iluminación</strong> o con problemas de
+              visibilidad (Reportes).
+            </li>
+            <li>
+              <strong>Zonas seguras</strong> recomendadas por los usuarios
+              (Rutas Seguras).
+            </li>
+            <li>
+              <strong>Usuarios</strong> que interactúan con la plataforma.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.solucion}>
+        <div className={styles.solucionText}>
+          <h2>¿Qué resolvemos?</h2>
+          <p>
+            Combatimos la inseguridad y la desinformación en la vía pública,
+            ayudando a las personas a desplazarse con mayor tranquilidad.
+          </p>
+        </div>
+        <div className={styles.solucionImage}>
+          <img
+            src="/assets/solucion-img.png"
+            alt="Ilustración de solucion a problema"
+          />
+        </div>
       </section>
 
       <section className={styles.cardsSection}>
