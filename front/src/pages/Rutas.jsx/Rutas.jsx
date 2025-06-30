@@ -411,7 +411,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import RutaModal from "../../components/RutaModal";
 import RutaCard from "../../components/RutaCard";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button.jsx";
 import "../../styles/rutas.scss";
 
 function Rutas() {

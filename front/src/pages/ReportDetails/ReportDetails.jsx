@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import ReportModal from '../../components/ReportModal.jsx';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button.jsx';
 
 const ReportDetails = () => {
   const { id } = useParams();

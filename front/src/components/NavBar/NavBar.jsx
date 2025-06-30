@@ -14,7 +14,8 @@ const NavBar = () => {
   return (
     <nav className="NavBar">
       <div className="NavBar_logo">
-        <p>Icono</p>
+        <p>Via Segura</p>
+       
       </div>
 
       {/* menú hamburguesa */}

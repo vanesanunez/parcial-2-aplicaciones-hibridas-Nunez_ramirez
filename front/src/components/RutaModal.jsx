@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Button from "./Button";
+import Button from "./Button/Button.jsx";
 //import Button from "../../components/Button";
 
 const RutaModal = ({ ruta, onClose, onRutaSaved }) => {
