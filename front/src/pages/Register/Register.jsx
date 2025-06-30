@@ -45,7 +45,6 @@ const Register = () => {
   };
 
   return (
-  
 
     <div className="register-page">
       <div className="register-image-container"></div>
