@@ -19,6 +19,7 @@ const Reports = () => {
   const debouncedSearch = useDebounce(search, 1000);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
+ 
 
   // Traer todos los reportes (no requiere token de autenticación)
   const fetchReports = async () => {
@@ -136,6 +137,7 @@ const Reports = () => {
           value={reportLocation}
           onChange={(e) => setReportLocation(e.target.value)}
         />
+
         <Button type="submit" className="btn-primary">
           Agregar reporte
         </Button>
@@ -174,6 +176,7 @@ const Reports = () => {
             ))}
           </ul>
         )}
+        
       </form>
 
       <div className="card-grid">

@@ -7,7 +7,7 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
   const [title, setTitle] = useState(report.title);
   const [description, setDescription] = useState(report.description);
   const [location, setLocation] = useState(report.location);
-//   const [imageFile, setImageFile] = useState(null);
+  
 
   useEffect(() => {
     if (report) {
@@ -17,9 +17,6 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
     }
   }, [report]);
 
-//   const handleFileChange = (e) => {
-//     setImageFile(e.target.files[0]);
-//   };
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,11 +87,7 @@ const handleSubmit = async (e) => {
               required
             />
           </div>
-{/* 
-          <div className="form-group">
-            <label>Imagen</label>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-          </div> */}
+       
 
           <div className="modal-actions">
             <button type="submit" className="btn-primary">Guardar Cambios</button>
