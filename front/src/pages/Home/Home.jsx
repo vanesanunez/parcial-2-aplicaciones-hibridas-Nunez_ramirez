@@ -68,15 +68,13 @@ function Home() {
           <p>Obtené información colaborativa y en tiempo real sobre:</p>
           <ul>
             <li>
-              <strong>Calles sin iluminación</strong> o con problemas de
-              visibilidad (Reportes).
+              <strong>Alertas urbanas</strong>, como calles sin iluminación o con problemas de visibilidad (Reportes).
             </li>
             <li>
-              <strong>Zonas seguras</strong> recomendadas por los usuarios
-              (Rutas Seguras).
+              <strong>Zonas seguras</strong> y trayectos recomendados por los usuarios (Rutas Seguras).
             </li>
             <li>
-              <strong>Usuarios</strong> que interactúan con la plataforma.
+              <strong>Novedades locales</strong> como cortes de calles, desvíos o accidentes.
             </li>
           </ul>
         </div>
@@ -89,6 +87,14 @@ function Home() {
             Combatimos la inseguridad y la desinformación en la vía pública,
             ayudando a las personas a desplazarse con mayor tranquilidad.
           </p>
+          <p>
+            a través de tecnología y participación comunitaria, brindamos datos
+            en tiempo real sobre calles con mejor iluminación, rutas
+            alternativas más seguras, puntos de interés y reportes de la
+            comunidad. Nuestra red se nutre de la colaboración entre vecinos,
+            creando un ecosistema donde cada reporte contribuye a mejorar la
+            experiencia y seguridad de todos.
+          </p>
         </div>
         <div className={styles.solucionImage}>
           <img
@@ -96,10 +102,12 @@ function Home() {
             alt="Ilustración de solucion a problema"
           />
         </div>
+       
       </section>
 
       <section className={styles.cardsSection}>
-        <h2>Últimas rutas compartidas</h2>
+        <div className={styles.titulo2}> <h2>Últimas rutas compartidas</h2></div>
+       
         <div className={styles.cardsContainer}>
           {rutas.map((ruta) => (
             <div className={styles.card} key={ruta._id}>
@@ -117,7 +125,8 @@ function Home() {
       </section>
 
       <section className={styles.cardsSection}>
-        <h2>Últimos reportes registrados</h2>
+      <div className={styles.titulo3}><h2>Últimos reportes registrados</h2></div>
+        
         <div className={styles.cardsContainer}>
           {reportes.map((reporte) => (
             <div className={styles.card} key={reporte._id}>

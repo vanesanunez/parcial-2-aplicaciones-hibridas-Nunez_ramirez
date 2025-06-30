@@ -50,7 +50,7 @@ const NavBar = () => {
                 Registro
               </Link>
               <Link to="/login" onClick={() => setMenuMovil(false)}>
-                Login
+                Iniciar sesión
               </Link>
             </>
           )}
@@ -59,7 +59,7 @@ const NavBar = () => {
         <div className="NavBar_user">
           {user ? (
             <>
-              <span>¡Hola, {user.name}!</span>
+              <span>¡Hola, {user.name} !</span>
               <button onClick={logoutUser}>Logout</button>
             </>
           ) : (

@@ -114,7 +114,7 @@ const Reports = () => {
  <div className="reports-page">
     <div className="home-container">
    
-    <div className="report-title"><h2>Reportes</h2></div>
+    <div className="report-title"><h2>Reportes urbanos</h2></div>
       
       {reports.length === 0 && <p>No hay reportes aún.</p>}
 

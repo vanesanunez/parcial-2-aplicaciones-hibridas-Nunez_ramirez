@@ -7,14 +7,28 @@
   font-family: 'Inter', sans-serif;
 }
 
+.titulo2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgb(80, 80, 247) ;
+  color: aliceblue;
+  margin-bottom: 30px;
+}
+.titulo3 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f2826d ;
+  color: aliceblue;
+  margin-bottom: 30px;
+}
 
 .intro {
   display: flex;
   align-items: center;
   gap: 2rem;
   max-width: 1200px;
-  margin: 0 auto 60px;
-  padding: 20px;
+  margin: 0 auto 30px;
+ padding-top: 10rem;
   flex-wrap: wrap;
 }
 
@@ -52,7 +66,7 @@
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto 60px;
-  padding: 20px;
+ 
   flex-wrap: wrap;
   
 }
@@ -135,7 +149,7 @@ footer {
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .intro,
   .solucion {
     flex-direction: column;
@@ -160,7 +174,7 @@ footer {
 
 @media (max-width: 700px) {
   .homeContainer {
-    padding-top: 200rem;
+    padding-top: 260rem;
   }
 
   .card {

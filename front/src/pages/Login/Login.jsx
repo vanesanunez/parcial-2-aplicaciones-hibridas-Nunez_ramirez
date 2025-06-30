@@ -46,7 +46,7 @@ const Login = () => {
             />
           </div>
           <div>
-            <label>Password</label>
+            <label>Contraseña</label>
             <input
               type="password"
               value={userData.password}
