@@ -1,0 +1,142 @@
+.reports-page {
+    padding-top: 350px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background-color: #f7f9fc;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Estilo específico para el título principal "Reportes" */
+  .report-title {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    color: #2a2a2a;
+    font-weight: 700;
+  }
+  
+  /* Encabezado con selector de cantidad por página */
+  .reports-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  
+    p {
+      margin: 0;
+      font-weight: 500;
+      color: #2a2a2a;
+    }
+  
+    select {
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      background-color: #fff;
+      color: #2a2a2a;
+      appearance: none;
+      cursor: pointer;
+    }
+  }
+  
+  /* Formularios: alta + búsqueda */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  
+    input {
+      flex: 1 1 200px;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  }
+  
+  /* Select general */
+  select {
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  /* Cards grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  /* Autocompletado de búsqueda */
+  .autocomplete-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+    padding: 0;
+    list-style: none;
+  
+    li {
+      background-color: #f0f0f0;
+      color: #2a2a2a;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+      border: 1px solid #ccc;
+  
+      &:hover {
+        background-color: #f2826d;
+        color: #fff;
+      }
+    }
+  }
+  
+  /* Botones de paginación */
+  .pagination-controls {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  
+    button {
+      padding: 0.5rem 1.25rem;
+      font-weight: 600;
+      border-radius: 5px;
+      background-color: #3082e3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.25s ease;
+  
+      &:disabled {
+        background-color: #d6e8fb;
+        cursor: not-allowed;
+        color: #888;
+      }
+  
+      &:hover:not(:disabled) {
+        background-color: #085baf;
+      }
+    }
+  }
+  

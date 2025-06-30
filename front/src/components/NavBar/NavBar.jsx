@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import "./NavBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
