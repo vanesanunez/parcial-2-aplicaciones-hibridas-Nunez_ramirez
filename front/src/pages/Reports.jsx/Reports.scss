@@ -54,8 +54,7 @@
       cursor: pointer;
     }
   }
-  
-  /* Formularios: alta + búsqueda */
+ 
   form {
     display: flex;
     flex-wrap: wrap;
@@ -69,7 +68,7 @@
     }
   }
   
-  /* Select general */
+ 
   select {
     padding: 0.4rem 0.75rem;
     border-radius: 6px;
@@ -122,8 +121,8 @@
       padding: 0.5rem 1.25rem;
       font-weight: 600;
       border-radius: 5px;
-      background-color: #3082e3;
-      color: white;
+      background-color: #d7e6f7;
+      color: rgb(26, 25, 25);
       border: none;
       cursor: pointer;
       transition: background-color 0.25s ease;
@@ -136,6 +135,7 @@
   
       &:hover:not(:disabled) {
         background-color: #085baf;
+        color: white;
       }
     }
   }
