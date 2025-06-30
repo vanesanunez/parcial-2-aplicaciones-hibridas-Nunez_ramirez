@@ -512,7 +512,31 @@ function Rutas() {
     }
   };
 
+/*  const handleDelete = async (id) => {
+    try {
+      const token = Cookies.get("jwtoken");
+      await axios.delete(`http://localhost:3002/routes/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setRutas(rutas.filter((ruta) => ruta._id !== id));
+    } catch (error) {
+      console.error(
+        "Error al eliminar la ruta:",
+        error.response?.data || error.message
+      );
+      alert("No se pudo eliminar la ruta.");
+    }
+  };*/
+
   const handleDelete = async (id) => {
+    const confirmacion = window.confirm(
+      "¿Estás segura de que querés eliminar esta ruta?"
+    );
+    if (!confirmacion) return;
+
     try {
       const token = Cookies.get("jwtoken");
       await axios.delete(`http://localhost:3002/routes/${id}`, {
@@ -534,72 +558,70 @@ function Rutas() {
   return (
     <div className="page-container">
       <div className="form-container">
-          <h1>{editMode ? "Editar ruta" : "Agregar nueva ruta"}</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre de la ruta"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Punto de inicio"
-          value={startPoint}
-          onChange={(e) => setStartPoint(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Punto final"
-          value={endPoint}
-          onChange={(e) => setEndPoint(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Descripción"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        ></textarea>
+        <h1>{editMode ? "Editar ruta" : "Agregar nueva ruta"}</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nombre de la ruta"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Punto de inicio"
+            value={startPoint}
+            onChange={(e) => setStartPoint(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Punto final"
+            value={endPoint}
+            onChange={(e) => setEndPoint(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Descripción"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          ></textarea>
 
-        <Button type="submit" className="btn-primary">
-          {editMode ? "Guardar cambios" : "Guardar ruta"}
-        </Button>
-      </form> 
-      
-    
-      <h2>Rutas Seguras</h2>
-      {rutas.length === 0 ? (
-        <p>No hay rutas disponibles.</p>
-      ) : (
-        <div className="card-grid">
-          {rutas.map((ruta) => (
-            <RutaCard
-              key={ruta._id}
-              ruta={ruta}
-              onEdit={() => startEditing(ruta)}
-              onDelete={() => handleDelete(ruta._id)}
-            />
-          ))}
-        </div>
-      )}
-      {showModal && selectedRuta && (
-        <RutaModal
-          ruta={selectedRuta}
-          onClose={() => setShowModal(false)}
-          onRutaSaved={() => {
-            setShowModal(false);
-            axios
-              .get("http://localhost:3002/routes")
-              .then((res) => setRutas(res.data))
-              .catch((err) => console.error("Error actualizando rutas", err));
-          }}
-        />
-      )}
+          <Button type="submit" className="btn-primary">
+            {editMode ? "Guardar cambios" : "Guardar ruta"}
+          </Button>
+        </form>
+
+        <h2>Rutas Seguras</h2>
+        {rutas.length === 0 ? (
+          <p>No hay rutas disponibles.</p>
+        ) : (
+          <div className="card-grid">
+            {rutas.map((ruta) => (
+              <RutaCard
+                key={ruta._id}
+                ruta={ruta}
+                onEdit={() => startEditing(ruta)}
+                onDelete={() => handleDelete(ruta._id)}
+              />
+            ))}
+          </div>
+        )}
+        {showModal && selectedRuta && (
+          <RutaModal
+            ruta={selectedRuta}
+            onClose={() => setShowModal(false)}
+            onRutaSaved={() => {
+              setShowModal(false);
+              axios
+                .get("http://localhost:3002/routes")
+                .then((res) => setRutas(res.data))
+                .catch((err) => console.error("Error actualizando rutas", err));
+            }}
+          />
+        )}
       </div>
-
     </div>
   );
 }
