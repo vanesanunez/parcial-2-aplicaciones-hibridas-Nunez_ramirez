@@ -4,11 +4,11 @@
   padding-right: 20px;
   padding-bottom: 40px;
   font-family: Arial, sans-serif;*/
-    max-width: 900px;
+    max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 1.5rem 3rem; // arriba, laterales, abajo
   font-family: Arial, sans-serif;
-  padding-top: 40rem;
+  padding-top: 20rem;
 }
 
 form input,
@@ -25,6 +25,16 @@ form textarea {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+.form-container {
+  background-color: #f7f9fc;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
+  margin-bottom: 2rem;
+
+
 }
 
 .card {

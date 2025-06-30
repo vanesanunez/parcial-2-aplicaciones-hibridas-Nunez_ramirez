@@ -533,7 +533,8 @@ function Rutas() {
 
   return (
     <div className="page-container">
-      <h1>{editMode ? "Editar ruta" : "Agregar nueva ruta"}</h1>
+      <div className="form-container">
+          <h1>{editMode ? "Editar ruta" : "Agregar nueva ruta"}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -566,9 +567,9 @@ function Rutas() {
         <Button type="submit" className="btn-primary">
           {editMode ? "Guardar cambios" : "Guardar ruta"}
         </Button>
-      </form>
-
-
+      </form> 
+      
+    
       <h2>Rutas Seguras</h2>
       {rutas.length === 0 ? (
         <p>No hay rutas disponibles.</p>
@@ -597,6 +598,8 @@ function Rutas() {
           }}
         />
       )}
+      </div>
+
     </div>
   );
 }
