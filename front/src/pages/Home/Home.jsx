@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
@@ -38,8 +36,8 @@ function Home() {
   }, []);
 
   return (
-       <div className={styles.homeContainer}>
-    <section className={styles.intro}>
+    <div className={styles.homeContainer}>
+      {/* <section className={styles.intro}>
         <h1>Vía Segura</h1>
         <p>Obtené información colaborativa y en tiempo real sobre:</p>
         <ul>
@@ -47,6 +45,28 @@ function Home() {
           <li><strong>Zonas seguras</strong> recomendadas por los usuarios (Rutas Seguras).</li>
           <li><strong>Usuarios</strong> que interactúan con la plataforma.</li>
         </ul>
+      </section> */}
+      <section className={styles.intro}>
+        <div className={styles.introImage}>
+        <img src="/assets/inicio-img.png" alt="ilustracion de mujer con celular" />
+        </div>
+        <div className={styles.introText}>
+          <h1>Vía Segura</h1>
+          <p>Obtené información colaborativa y en tiempo real sobre:</p>
+          <ul>
+            <li>
+              <strong>Calles sin iluminación</strong> o con problemas de
+              visibilidad (Reportes).
+            </li>
+            <li>
+              <strong>Zonas seguras</strong> recomendadas por los usuarios
+              (Rutas Seguras).
+            </li>
+            <li>
+              <strong>Usuarios</strong> que interactúan con la plataforma.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section className={styles.solucion}>
@@ -63,8 +83,12 @@ function Home() {
           {rutas.map((ruta) => (
             <div className={styles.card} key={ruta._id}>
               <h3>{ruta.name}</h3>
-              <p><strong>Desde:</strong> {ruta.startPoint}</p>
-              <p><strong>Hasta:</strong> {ruta.endPoint}</p>
+              <p>
+                <strong>Desde:</strong> {ruta.startPoint}
+              </p>
+              <p>
+                <strong>Hasta:</strong> {ruta.endPoint}
+              </p>
               <p>{ruta.description}</p>
             </div>
           ))}
@@ -77,15 +101,14 @@ function Home() {
           {reportes.map((reporte) => (
             <div className={styles.card} key={reporte._id}>
               <h3>{reporte.title}</h3>
-              <p><strong>Ubicación:</strong> {reporte.location}</p>
+              <p>
+                <strong>Ubicación:</strong> {reporte.location}
+              </p>
               <p>{reporte.description}</p>
             </div>
           ))}
         </div>
       </section>
-
-     
-      
     </div>
   );
 }
