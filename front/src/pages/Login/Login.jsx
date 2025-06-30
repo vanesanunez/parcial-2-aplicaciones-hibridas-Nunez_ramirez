@@ -55,41 +55,15 @@ const Login = () => {
               }
             />
           </div>
+         
           <button type="submit">Login</button>
           {error && <p className="error-message">{error}</p>}
+
+          
         </form>
       </div>
     </div>
   );
-  
-  // return (
-  //   <div>
-  //   <h2>Iniciar sesión</h2>
-  //   <form>
-  //     <div>
-  //       <label>Email</label>
-  //       <input
-  //         type="email"
-  //         value={userData.email}
-  //         onChange={(e) => setUserData({...userData, email: e.target.value})}
-  //       />
-  //     </div>
-  //     <div>
-  //       <label>Password</label>
-  //       <input
-  //         type="password"
-  //         value={userData.password}
-  //         onChange={(e) => setUserData({...userData, password: e.target.value})}
-  //       />
-  //     </div>
-  //     <button onClick={handleLogin}>Login</button>
-  //     {
-  //       error &&  <p>{error}</p>
-  //     }
-     
-  //   </form>
-  // </div>
-  // )
 }
 
 export default Login;
