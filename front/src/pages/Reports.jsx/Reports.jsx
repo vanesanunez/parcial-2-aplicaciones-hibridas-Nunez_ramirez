@@ -3,8 +3,8 @@ import axios from "axios";
 import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import Card from "../../components/Card";
-import Button from "../../components/Button";
+import Card from "../../components/Card/Card.jsx";
+import Button from "../../components/Button/Button.jsx";
 import './Reports.scss';
 
 const Reports = () => {
