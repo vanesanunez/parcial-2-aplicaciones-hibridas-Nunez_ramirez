@@ -19,6 +19,8 @@ const Reports = () => {
   const debouncedSearch = useDebounce(search, 1000);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
+  const [image,setImage] = useState(null);
+  console.log(image)
  
 
   // Traer todos los reportes (no requiere token de autenticación)
@@ -44,7 +46,7 @@ const Reports = () => {
   }, []);
 
   // Crear nuevo reporte
-  const handleSubmit = async (e) => {
+  /*const handleSubmit = async (e) => {
     e.preventDefault();
     const newReport = {
       title: reportName,
@@ -71,7 +73,44 @@ const Reports = () => {
     } catch (err) {
       console.error(err);
     }
-  };
+  };*/
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  const token = Cookies.get("jwtoken");
+  if (!token) {
+    return console.error("No hay token. Por favor inicia sesión.");
+  }
+
+  const formData = new FormData();
+  formData.append("title", reportName);
+  formData.append("description", reportDescription);
+  formData.append("location", reportLocation);
+  formData.append("tags", "general");
+  formData.append("locationPoint", JSON.stringify([])); 
+  if (image) {
+    formData.append("image", image);
+  }
+
+  try {
+    await axios.post("http://localhost:3002/reports", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data"
+      }
+    });
+
+    // limpiar
+    setReportName("");
+    setReportDescription("");
+    setReportLocation("");
+    setImage(null);
+    fetchReports();
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   const handleSearch = async (searchTerm) => {
     try {
@@ -142,6 +181,14 @@ const Reports = () => {
           Agregar reporte
         </Button>
       </form>
+
+      <div>
+        <label>Imagen</label>
+        <input type="file" accept='image/*' onChange={(e) => setImage(e.target.files[0])} />
+      </div>
+      {
+        image && <img src={URL.createObjectURL(image)}/>
+      }
 
       {/* Form search */}
       <form
