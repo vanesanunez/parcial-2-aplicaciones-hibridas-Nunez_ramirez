@@ -46,7 +46,7 @@ const Reports = () => {
   }, []);
 
   // Crear nuevo reporte
-  /*const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newReport = {
       title: reportName,
@@ -73,9 +73,9 @@ const Reports = () => {
     } catch (err) {
       console.error(err);
     }
-  };*/
+  };
 
-  const handleSubmit = async (e) => {
+ /* const handleSubmit = async (e) => {
   e.preventDefault();
   
   const token = Cookies.get("jwtoken");
@@ -110,7 +110,7 @@ const Reports = () => {
   } catch (err) {
     console.error(err);
   }
-};
+};*/
 
   const handleSearch = async (searchTerm) => {
     try {
@@ -177,18 +177,13 @@ const Reports = () => {
           onChange={(e) => setReportLocation(e.target.value)}
         />
 
+     
         <Button type="submit" className="btn-primary">
           Agregar reporte
         </Button>
       </form>
 
-      <div>
-        <label>Imagen</label>
-        <input type="file" accept='image/*' onChange={(e) => setImage(e.target.files[0])} />
-      </div>
-      {
-        image && <img src={URL.createObjectURL(image)}/>
-      }
+     
 
       {/* Form search */}
       <form

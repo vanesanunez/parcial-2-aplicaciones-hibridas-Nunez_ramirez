@@ -5,7 +5,7 @@ import authenticateJWT from "../middlewares/authMiddleware.js";
 const reportsRouter = express.Router();
 
 reportsRouter.get('/search', searchByTitle); // nueva búsqueda por título
-reportsRouter.post('/', authenticateJWT, createReporte); // requiere token para crear
+reportsRouter.post('/', authenticateJWT,  upload.single("image"),createReporte); // requiere token para crear
 reportsRouter.get('/', getReportes); 
 reportsRouter.get('/:id', getReporteById); 
 reportsRouter.get('/search/tags', searchByTag); 

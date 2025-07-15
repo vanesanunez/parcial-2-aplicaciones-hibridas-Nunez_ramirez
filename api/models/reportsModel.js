@@ -8,6 +8,9 @@ const reportSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   date: { type: Date, default: Date.now },
   tags: { type: [String], required: true },
+  image:{
+ type:String
+  },
   locationPoint: {
     type: [
       {

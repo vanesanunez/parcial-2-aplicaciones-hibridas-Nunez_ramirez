@@ -29,6 +29,10 @@ app.use('/users', usersRouter);
 app.use('/reports', reportsRouter);
 app.use('/routes', routesRouter);
 
+
+// Servir imágenes subidas
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 //Archivos estáticos (los guardé en carpeta public)
 app.use(express.static(path.join(__dirname, "public")));
 
