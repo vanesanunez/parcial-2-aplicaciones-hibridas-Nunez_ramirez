@@ -159,6 +159,13 @@ body {
   padding: 1rem 0;
 }
 
+.card svg {
+  transition: transform 0.3s;
+}
+.card:hover svg {
+  transform: scale(1.1);
+}
+
 /*.card {
   background-color: #ffffff;
   padding: 1rem;
