@@ -216,6 +216,48 @@ footer {
 }
 
 
+
+.introText ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.introText li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.listaCheck {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listaCheck li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.listaCheck img {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+}
+
+
 @media (max-width: 900px) {
   .intro,
   .solucion {

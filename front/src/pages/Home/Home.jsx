@@ -7,9 +7,14 @@ import {
   FaMapSigns,
   FaFlagCheckered,
   FaRegStickyNote,
-  FaExclamationTriangle, // <-- este faltaba
-  FaMapMarkerAlt
+  FaExclamationTriangle,
+  FaMapMarkerAlt,
+  
 } from "react-icons/fa";
+
+
+import { MdCheckCircleOutline } from "react-icons/md"; 
+
 
 
 
@@ -42,24 +47,24 @@ function Home() {
             alt="Personas conectadas colaborando"
           />
         </div>
-        <div className={styles.introText}>
-          <h1>Vía Segura</h1>
-          <p>Obtené información colaborativa y en tiempo real sobre:</p>
-          <ul>
-            <li>
-              <strong>Alertas urbanas</strong>, como calles sin iluminación o
-              con problemas de visibilidad (Reportes).
-            </li>
-            <li>
-              <strong>Zonas seguras</strong> y trayectos recomendados por los
-              usuarios (Rutas Seguras).
-            </li>
-            <li>
-              <strong>Novedades locales</strong> como cortes de calles, desvíos
-              o accidentes.
-            </li>
-          </ul>
-        </div>
+    <div className={styles.introText}>
+  <h1>Vía Segura</h1>
+  <p>Obtené información colaborativa y en tiempo real sobre:</p>
+ <ul className={styles.listaCheck}>
+  <li>
+    <img src="/assets/check-mark.png" alt="check" />
+    <span><strong>Alertas urbanas</strong>, como calles sin iluminación o con problemas de visibilidad (Reportes).</span>
+  </li>
+  <li>
+    <img src="/assets/check-mark.png" alt="check" />
+    <span><strong>Zonas seguras</strong> y trayectos recomendados por los usuarios (Rutas Seguras).</span>
+  </li>
+  <li>
+    <img src="/assets/check-mark.png" alt="check" />
+    <span><strong>Novedades locales</strong> como cortes de calles, desvíos o accidentes.</span>
+  </li>
+</ul>
+</div>
       </section>
 
       <section className={styles.solucion}>
