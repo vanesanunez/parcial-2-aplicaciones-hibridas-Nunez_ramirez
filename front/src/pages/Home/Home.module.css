@@ -258,6 +258,125 @@ footer {
 }
 
 
+.hero {
+  position: relative;
+  background: linear-gradient(to bottom right, #3c73e8, #5672ff);
+  color: white;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.heroText {
+  max-width: 500px;
+  z-index: 2;
+}
+
+.heroText h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.heroText p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.downloadBtn {
+  background-color: #ffffff;
+  color: #3c58e8;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.downloadBtn:hover {
+  background-color: #e6eaff;
+}
+
+.heroImage {
+  max-width: 300px;
+  z-index: 2;
+}
+
+
+/*seccion beneficios*/
+.beneficios {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f9f9ff;
+}
+
+.beneficios h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #3c58e8;
+}
+
+.beneficiosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.beneficioItem {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  max-width: 300px;
+  transition: transform 0.3s;
+}
+
+.beneficioItem:hover {
+  transform: translateY(-6px);
+}
+
+.beneficioItem img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.beneficioItem h3 {
+  color: #3c58e8;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.beneficioItem p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    border-radius: 0 0 60px 60px;
+  }
+
+  .heroImage {
+    margin-top: 2rem;
+  }
+}
+
+
 @media (max-width: 900px) {
   .intro,
   .solucion {

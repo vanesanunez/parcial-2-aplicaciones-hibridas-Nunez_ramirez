@@ -9,14 +9,9 @@ import {
   FaRegStickyNote,
   FaExclamationTriangle,
   FaMapMarkerAlt,
-  
 } from "react-icons/fa";
 
-
-import { MdCheckCircleOutline } from "react-icons/md"; 
-
-
-
+import { MdCheckCircleOutline } from "react-icons/md";
 
 function Home() {
   const [rutas, setRutas] = useState([]);
@@ -47,24 +42,33 @@ function Home() {
             alt="Personas conectadas colaborando"
           />
         </div>
-    <div className={styles.introText}>
-  <h1>Vía Segura</h1>
-  <p>Obtené información colaborativa y en tiempo real sobre:</p>
- <ul className={styles.listaCheck}>
-  <li>
-    <img src="/assets/check-mark.png" alt="check" />
-    <span><strong>Alertas urbanas</strong>, como calles sin iluminación o con problemas de visibilidad (Reportes).</span>
-  </li>
-  <li>
-    <img src="/assets/check-mark.png" alt="check" />
-    <span><strong>Zonas seguras</strong> y trayectos recomendados por los usuarios (Rutas Seguras).</span>
-  </li>
-  <li>
-    <img src="/assets/check-mark.png" alt="check" />
-    <span><strong>Novedades locales</strong> como cortes de calles, desvíos o accidentes.</span>
-  </li>
-</ul>
-</div>
+        <div className={styles.introText}>
+          <h1>Vía Segura</h1>
+          <p>Obtené información colaborativa y en tiempo real sobre:</p>
+          <ul className={styles.listaCheck}>
+            <li>
+              <img src="/assets/check-mark.png" alt="check" />
+              <span>
+                <strong>Alertas urbanas</strong>, como calles sin iluminación o
+                con problemas de visibilidad (Reportes).
+              </span>
+            </li>
+            <li>
+              <img src="/assets/check-mark.png" alt="check" />
+              <span>
+                <strong>Zonas seguras</strong> y trayectos recomendados por los
+                usuarios (Rutas Seguras).
+              </span>
+            </li>
+            <li>
+              <img src="/assets/check-mark.png" alt="check" />
+              <span>
+                <strong>Novedades locales</strong> como cortes de calles,
+                desvíos o accidentes.
+              </span>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section className={styles.solucion}>
@@ -91,37 +95,71 @@ function Home() {
         </div>
       </section>
 
-    
+      <section className={styles.beneficios}>
+        <h2>Beneficios de usar Vía Segura</h2>
+        <div className={styles.beneficiosGrid}>
+          <div className={styles.beneficioItem}>
+            <img src="/assets/locations.png" alt="Seguridad" />
+            <h3>Eficiencia</h3>
+            <p>
+              Elegí rutas con mejor iluminación y menos riesgo para moverte con
+              tranquilidad.
+            </p>
+          </div>
+          <div className={styles.beneficioItem}>
+            <img src="/assets/colaboration.png" alt="Colaborativo" />
+            <h3>Colaborativo</h3>
+            <p>
+              Sumá tu experiencia con reportes y ayudá a que otros eviten zonas
+              peligrosas.
+            </p>
+          </div>
+          <div className={styles.beneficioItem}>
+            <img src="/assets/clock.png" alt="Tiempo real" />
+            <h3>Tiempo Real</h3>
+            <p>
+              La información se actualiza constantemente gracias a las
+              contribuciones de la comunidad.
+            </p>
+          </div>
+          </div>
+      </section>
 
-
-  <section className={styles.cardsSection}>
+      <section className={styles.cardsSection}>
         <div className={styles.titulo2}>
           {" "}
           <h2>Últimas rutas compartidas</h2>
         </div>
 
-       <div className={styles.cardsContainer}>
-  {rutas.map((ruta) => (
-    <div className={`${styles.card} ${styles.fadeInCard}`} key={ruta._id}>
-      <h3>
-        <FaRoute style={{ marginRight: "6px", color: "#4a90e2" }} />
-        {ruta.name}
-      </h3>
-      <p>
-        <FaMapSigns style={{ marginRight: "6px", color: "#2d3436" }} />
-        <strong>Desde:</strong> {ruta.startPoint}
-      </p>
-      <p>
-        <FaFlagCheckered style={{ marginRight: "6px", color: "#2d3436" }} />
-        <strong>Hasta:</strong> {ruta.endPoint}
-      </p>
-      <p>
-        <FaRegStickyNote style={{ marginRight: "6px", color: "#777" }} />
-        {ruta.description}
-      </p>
-    </div>
-  ))}
-</div>
+        <div className={styles.cardsContainer}>
+          {rutas.map((ruta) => (
+            <div
+              className={`${styles.card} ${styles.fadeInCard}`}
+              key={ruta._id}
+            >
+              <h3>
+                <FaRoute style={{ marginRight: "6px", color: "#4a90e2" }} />
+                {ruta.name}
+              </h3>
+              <p>
+                <FaMapSigns style={{ marginRight: "6px", color: "#2d3436" }} />
+                <strong>Desde:</strong> {ruta.startPoint}
+              </p>
+              <p>
+                <FaFlagCheckered
+                  style={{ marginRight: "6px", color: "#2d3436" }}
+                />
+                <strong>Hasta:</strong> {ruta.endPoint}
+              </p>
+              <p>
+                <FaRegStickyNote
+                  style={{ marginRight: "6px", color: "#777" }}
+                />
+                {ruta.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className={styles.cardsSection}>
@@ -152,6 +190,22 @@ function Home() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className={styles.hero}>
+        <div className={styles.heroText}>
+          <h2>Descargá la App</h2>
+          <p>
+            Disponible para Android e iOS. Empezá a moverte de forma más segura.
+          </p>
+          <div className={styles.heroButtons}>
+            <button className={styles.downloadBtn}>Google Play</button>
+            <button className={styles.downloadBtn}>App Store</button>
+          </div>
+        </div>
+        <div className={styles.heroImage}>
+          <img src="/assets/mockup3.png" alt="Mockup Vía Segura" />
         </div>
       </section>
     </div>
