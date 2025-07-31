@@ -1,14 +1,13 @@
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 // import Cookies from 'js-cookie';
-// import './ReportModal.scss'; 
+// import './ReportModal.scss';
 
 // const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
 //   const [title, setTitle] = useState(report.title);
 //   const [description, setDescription] = useState(report.description);
 //   const [location, setLocation] = useState(report.location);
 //   const [image, setImage] = useState(null);
-  
 
 //   useEffect(() => {
 //     if (report) {
@@ -18,33 +17,32 @@
 //     }
 //   }, [report]);
 
-
 // const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
 //       const token = Cookies.get('jwtoken');
 //       if (!token) return alert('Por favor, inicia sesión.');
-  
+
 //       const updatedReport = {
 //         title,
 //         description,
 //         location
 //       };
-  
+
 //       await axios.put(
 //         `http://localhost:3002/reports/${report._id}`,
-//         updatedReport,  
+//         updatedReport,
 //         {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
-            
+
 //           },
 //         }
 //       );
-  
+
 //       alert('Reporte actualizado con éxito');
 //       onReportSaved();
-  
+
 //     } catch (err) {
 //       alert('Error actualizando el reporte');
 //       console.error(err);
@@ -88,7 +86,6 @@
 //               required
 //             />
 //           </div>
-       
 
 //           <div className="modal-actions">
 //             <button type="submit" className="btn-primary">Guardar Cambios</button>
@@ -102,16 +99,17 @@
 
 // export default ReportModal;
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import './ReportModal.scss'; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import "./ReportModal.scss";
 
 const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
   const [title, setTitle] = useState(report.title);
   const [description, setDescription] = useState(report.description);
   const [location, setLocation] = useState(report.location);
   const [image, setImage] = useState(null);
+  const [tags, setTags] = useState(report.tags || []);
 
   useEffect(() => {
     if (report) {
@@ -124,32 +122,28 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = Cookies.get('jwtoken');
-      if (!token) return alert('Por favor, inicia sesión.');
+      const token = Cookies.get("jwtoken");
+      if (!token) return alert("Por favor, inicia sesión.");
 
       const formData = new FormData();
-      formData.append('title', title);
-      formData.append('description', description);
-      formData.append('location', location);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("location", location);
       if (image) {
-        formData.append('image', image);
+        formData.append("image", image);
       }
 
-      await axios.put(
-        `http://localhost:3002/reports/${report._id}`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      );
+      await axios.put(`http://localhost:3002/reports/${report._id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      alert('Reporte actualizado con éxito');
+      alert("Reporte actualizado con éxito");
       onReportSaved();
     } catch (err) {
-      alert('Error actualizando el reporte');
+      alert("Error actualizando el reporte");
       console.error(err);
     }
   };
@@ -200,10 +194,29 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
+          <div className="form-group">
+            <label>Tags (separados por coma)</label>
+            <input
+              type="text"
+              value={tags.join(", ")}
+              onChange={(e) =>
+                setTags(
+                  e.target.value
+                    .split(",")
+                    .map((tag) => tag.trim())
+                    .filter((tag) => tag !== "")
+                )
+              }
+            />
+          </div>
 
           <div className="modal-actions">
-            <button type="submit" className="btn-primary">Guardar Cambios</button>
-            <button type="button" onClick={onDelete} className="btn-danger">Borrar Reporte</button>
+            <button type="submit" className="btn-primary">
+              Guardar Cambios
+            </button>
+            <button type="button" onClick={onDelete} className="btn-danger">
+              Borrar Reporte
+            </button>
           </div>
         </form>
       </div>
