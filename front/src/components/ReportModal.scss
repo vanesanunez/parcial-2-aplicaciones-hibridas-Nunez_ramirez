@@ -66,11 +66,21 @@
         cursor: pointer;
     
         &:hover {
-          background-color: darken(#3082e3, 7%);
+          background-color: (#3082e3, 7%);
         }
       }
     }
+    .preview {
+      margin-top: 10px;
+      text-align: center;
     
+      .preview-image {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+    }
   
     label {
       font-weight: 600;

@@ -1,23 +1,32 @@
-
-
 import Report from "../models/reportsModel.js";
-import { fileURLToPath } from "url";
-import fs from "fs";
 import path from "path";
+import fs from "fs";
 
 // Crear reporte (requiere token)
 export const createReporte = async (req, res) => {
-  try {
-    const { title, description, location, tags, locationPoint = [] } = req.body;
-    const userId = req.user.id;
+  const { title, description, location, tags, locationPoint = [] } = req.body;
+  const userId = req.user.id;
 
-    if (!title || !description || !location || !tags) {
-      return res.status(400).json({ message: "Todos los campos obligatorios" });
+  if (!title || !description || !location || !tags) {
+    return res.status(400).json({ message: "Todos los campos obligatorios" });
+  }
+
+  // Parsear tags para asegurar que sea array
+  let parsedTags = [];
+  if (tags) {
+    if (typeof tags === "string") {
+      try {
+        parsedTags = JSON.parse(tags);
+        if (!Array.isArray(parsedTags)) parsedTags = [tags];
+      } catch {
+        parsedTags = [tags];
+      }
+    } else if (Array.isArray(tags)) {
+      parsedTags = tags;
     }
+  }
 
-    // Si tags viene como string (ej: '[ "robo", "bicicleta" ]'), parsearlo
-    const parsedTags = typeof tags === "string" ? JSON.parse(tags) : tags;
-
+  try {
     const nuevoReporte = new Report({
       title,
       description,
@@ -35,7 +44,7 @@ export const createReporte = async (req, res) => {
   }
 };
 
-// Obtener todos los reportes
+// Obtener todos los reportes 
 export const getReportes = async (req, res) => {
   try {
     const reports = await Report.find();
@@ -45,7 +54,7 @@ export const getReportes = async (req, res) => {
   }
 };
 
-// Obtener reporte por ID
+// Obtener reporte por id
 export const getReporteById = async (req, res) => {
   try {
     const report = await Report.findById(req.params.id);
@@ -56,15 +65,16 @@ export const getReporteById = async (req, res) => {
   }
 };
 
-// Buscar reportes por tag
 export const searchByTag = async (req, res) => {
   try {
     const tags = req.query.tags;
+
     if (!tags || tags.length === 0) {
       return res.status(400).json({ error: "No se proporcionaron tags para buscar" });
     }
 
     const tagsArray = Array.isArray(tags) ? tags : [tags];
+
     const reportes = await Report.find({ tags: { $in: tagsArray } });
 
     res.json(reportes);
@@ -73,52 +83,10 @@ export const searchByTag = async (req, res) => {
   }
 };
 
-// Actualizar reporte
-// export const updateReporte = async (req, res) => {
-//   try {
-//     const reportId = req.params.id;
-//     const report = await Report.findById(reportId);
-//     if (!report) return res.status(404).json({ message: "Reporte no encontrado" });
-
-//     // Actualizar campos
-//     const updatedFields = {
-//       title: req.body.title || report.title,
-//       description: req.body.description || report.description,
-//       location: req.body.location || report.location,
-//     };
-
-//     // Parsear tags si vienen como string
-//     if (req.body.tags) {
-//       updatedFields.tags =
-//         typeof req.body.tags === "string" ? JSON.parse(req.body.tags) : req.body.tags;
-//     }
-
-//     // Si hay nueva imagen, guardar y borrar la anterior
-//     if (req.file) {
-//       // Eliminar imagen anterior si existía
-//       if (report.image) {
-//         const imagePath = path.join(process.cwd(), report.image);
-//         if (fs.existsSync(imagePath)) {
-//           fs.unlinkSync(imagePath);
-//         }
-//       }
-//       updatedFields.image = `/uploads/${req.file.filename}`;
-//     }
-
-//     const updatedReport = await Report.findByIdAndUpdate(reportId, updatedFields, {
-//       new: true,
-//     });
-
-//     res.json(updatedReport);
-//   } catch (error) {
-//     console.error("Error actualizando reporte:", error);
-//     res.status(500).json({ error: error.message });
-//   }
-// };
-// Actualizar reporte
 export const updateReporte = async (req, res) => {
   try {
     const reportId = req.params.id;
+
     const report = await Report.findById(reportId);
     if (!report) return res.status(404).json({ message: "Reporte no encontrado" });
 
@@ -129,19 +97,21 @@ export const updateReporte = async (req, res) => {
       location: req.body.location || report.location,
     };
 
-    // Parsear tags si vienen como string separados por coma
+    // Parsear tags para actualizar
     if (req.body.tags) {
-      if (Array.isArray(req.body.tags)) {
+      if (typeof req.body.tags === "string") {
+        try {
+          const parsed = JSON.parse(req.body.tags);
+          updatedFields.tags = Array.isArray(parsed) ? parsed : [req.body.tags];
+        } catch {
+          updatedFields.tags = [req.body.tags];
+        }
+      } else if (Array.isArray(req.body.tags)) {
         updatedFields.tags = req.body.tags;
-      } else if (typeof req.body.tags === "string") {
-        updatedFields.tags = req.body.tags
-          .split(",")
-          .map(tag => tag.trim())
-          .filter(tag => tag !== "");
       }
     }
 
-    // Si hay nueva imagen, guardar y borrar la anterior
+    // Si hay nueva imagen, borrar la anterior
     if (req.file) {
       if (report.image) {
         const imagePath = path.join(process.cwd(), report.image);
@@ -163,23 +133,15 @@ export const updateReporte = async (req, res) => {
   }
 };
 
-
-// Eliminar reporte
 export const deleteReporte = async (req, res) => {
   try {
     const reportId = req.params.id;
+
     const report = await Report.findById(reportId);
     if (!report) return res.status(404).json({ message: "Reporte no encontrado" });
 
-    // Eliminar imagen si existe
-    if (report.image) {
-      const imagePath = path.join(process.cwd(), report.image);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
-    }
-
     await Report.findByIdAndDelete(reportId);
+
     res.json({ message: "Reporte eliminado con éxito" });
   } catch (error) {
     console.error("Error eliminando reporte:", error);
@@ -201,3 +163,6 @@ export const searchByTitle = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
