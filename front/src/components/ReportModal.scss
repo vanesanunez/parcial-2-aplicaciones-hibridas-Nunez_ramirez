@@ -12,10 +12,13 @@
   }
   
   .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #fff;
     padding: 2rem;
     border-radius: 1.5rem;
-    width: 430px;
+    width: 450px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
