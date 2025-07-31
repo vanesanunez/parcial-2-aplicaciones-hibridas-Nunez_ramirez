@@ -83,6 +83,18 @@ export const searchByTag = async (req, res) => {
   }
 };
 
+// Obtener reportes por usuario
+export const getReportesByUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const reportes = await Report.find({ userId });
+
+    res.json(reportes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const updateReporte = async (req, res) => {
   try {
     const reportId = req.params.id;

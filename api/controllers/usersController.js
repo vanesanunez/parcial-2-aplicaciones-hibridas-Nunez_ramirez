@@ -68,25 +68,6 @@ export const createUser = async (req, res) => {
   }
 };
 
-
-
-// POST /users/login — Login
-// export const loginUser = async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await User.findOne({ email });
-//     if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
-
-//     const validPassword = await bcrypt.compare(password, user.password);
-//     if (!validPassword) return res.status(401).json({ message: "Contraseña incorrecta" });
-
-//     const token = jwt.sign({ id: user._id, email: user.email }, secretKey, { expiresIn: '1h' });
-//     res.status(200).json({ token });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
