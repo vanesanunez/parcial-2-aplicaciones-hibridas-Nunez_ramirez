@@ -9,6 +9,8 @@ import Reports from './pages/Reports.jsx/Reports'
 import ReportDetails from './pages/ReportDetails/ReportDetails'
 import Footer from "./components/Footer";
 import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
+import UserProfile from './pages/userProfile.jsx'
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/reports" element={<Reports />} />
         <Route path="/reports/:id" element={<ReportDetails />} />  
         <Route path="/rutas" element={<Rutas />} />
+        <Route path="/perfil" element={<UserProfile />} />
       </Route>
       </Routes>
 

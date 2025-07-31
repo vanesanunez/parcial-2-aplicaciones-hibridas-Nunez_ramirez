@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import "userProfile.scss"
+
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);

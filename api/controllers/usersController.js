@@ -104,7 +104,7 @@ export const getUsers = async (req, res) => {
 // GET /users/:id — Obtener un usuario por id
 export const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id); // cambio aquí
+    const user = await User.findById(req.params.id); 
     if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
 
     const { password, ...userWithoutPassword } = user.toObject();
@@ -126,7 +126,7 @@ export const updateUser = async (req, res) => {
     }
 
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id, // cambio aquí
+      req.params.id, 
       actualizaciones,
       { new: true }
     );
