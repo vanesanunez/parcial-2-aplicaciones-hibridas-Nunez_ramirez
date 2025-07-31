@@ -16,7 +16,7 @@ reportsRouter.get('/search/tags', searchByTag);
 // reportsRouter.delete('/:id', authenticateJWT, deleteReporte); // requiere token para eliminar
 
 reportsRouter.post('/', authenticateJWT, upload.single("image"), createReporte); //requiere token, ahora permite imagn
-reportsRouter.put('/:id', authenticateJWT, updateReporte);
+reportsRouter.put('/:id', authenticateJWT, upload.single("image"), updateReporte);
 reportsRouter.delete('/:id', authenticateJWT, deleteReporte);
 
 export { reportsRouter };
