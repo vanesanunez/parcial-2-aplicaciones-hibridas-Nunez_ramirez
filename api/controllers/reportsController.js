@@ -19,7 +19,7 @@ export const createReporte = async (req, res) => {
       tags,
       userId,
       locationPoint,
-        image: req.file ? `/uploads/${req.file.filename}` : undefined 
+      image: req.file ? `/uploads/${req.file.filename}` : undefined 
     });
 
     const savedReport = await nuevoReporte.save();

@@ -1,18 +1,41 @@
-import multer from "multer"
+// import multer from "multer"
 
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,'uploads/')
+//     },
+//     filename:(req,file,cb)=>{
+//         const unique = Date.now() + "-" + file.originalname;
+//         cb(null,unique)
+//     }
+// })
+
+// const fileFilter =(req,filter,cb)=>{
+//     if(file.mimetype.startsWith("image/")) cb(null,true)
+//     else cb(new Error("only images allowed"),false)    
+// }
+
+// export const upload =multer({storage,fileFilter})
+import multer from "multer";
+import path from "path";
+
+// Configuración de almacenamiento
 const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,'uploads/')
-    },
-    filename:(req,file,cb)=>{
-        const unique = Date.now() + "-" + file.originalname;
-        cb(null,unique)
-    }
-})
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // Carpeta donde se guardan las imágenes
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext); // Nombre único
+  },
+});
 
-const fileFilter =(req,filter,cb)=>{
-    if(file.mimetype.startsWith("image/")) cb(null,true)
-    else cb(new Error("only images allowed"),false)    
-}
+// Filtro para aceptar solo imágenes
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image/")) cb(null, true);
+  else cb(new Error("Solo se permiten archivos de imagen."), false);
+};
 
-export const upload =multer({storage,fileFilter})
+const upload = multer({ storage, fileFilter });
+
+export default upload;

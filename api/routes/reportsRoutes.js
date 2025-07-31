@@ -1,6 +1,7 @@
 import express from "express";
 import { createReporte, getReportes, getReporteById, searchByTag, searchByTitle, updateReporte, deleteReporte } from "../controllers/reportsController.js";
 import authenticateJWT from "../middlewares/authMiddleware.js";
+import upload from "../middlewares/upload.js";
 
 const reportsRouter = express.Router();
 
@@ -11,7 +12,11 @@ reportsRouter.get('/:id', getReporteById);
 reportsRouter.get('/search/tags', searchByTag); 
 //reportsRouter.get('/search', searchReports); 
 //reportsRouter.get('/:reportId/details', getReportDetailsWithTasks); 
-reportsRouter.put('/:id', authenticateJWT, updateReporte); // requiere token para modificar
-reportsRouter.delete('/:id', authenticateJWT, deleteReporte); // requiere token para eliminar
+// reportsRouter.put('/:id', authenticateJWT, updateReporte); // requiere token para modificar
+// reportsRouter.delete('/:id', authenticateJWT, deleteReporte); // requiere token para eliminar
+
+reportsRouter.post('/', authenticateJWT, upload.single("image"), createReporte);
+reportsRouter.put('/:id', authenticateJWT, updateReporte);
+reportsRouter.delete('/:id', authenticateJWT, deleteReporte);
 
 export { reportsRouter };
