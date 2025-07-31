@@ -206,7 +206,7 @@ const Reports = () => {
             title={report.title}
             description={report.description}
             location={report.location}
-            date={report.createdAt}
+            date={report.date}
             tags={report.tags}
             image={report.image}
           >

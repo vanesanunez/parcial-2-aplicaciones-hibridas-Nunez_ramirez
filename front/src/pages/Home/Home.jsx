@@ -168,8 +168,18 @@ function Home() {
         </div>
 
         <div className={styles.cardsContainer}>
+          
           {reportes.map((reporte) => (
-            <div className={styles.card} key={reporte._id}>
+             <div className={styles.card} key={reporte._id}>
+             {reporte.image && (
+               <div className={styles.cardImageWrapper}>
+                 <img
+                   src={`http://localhost:3002${reporte.image}`}
+                   alt="Imagen del reporte"
+                   className={styles.cardImage}
+                 />
+               </div>
+             )}
               <h3>
                 <FaExclamationTriangle
                   style={{ marginRight: "6px", color: "#f2826d" }}
