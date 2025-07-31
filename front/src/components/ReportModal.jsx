@@ -116,6 +116,7 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
       setTitle(report.title);
       setDescription(report.description);
       setLocation(report.location);
+      setTags(report.tags || []);
     }
   }, [report]);
 
@@ -129,6 +130,7 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("location", location);
+      tags.forEach((tag) => formData.append("tags", tag));
       if (image) {
         formData.append("image", image);
       }
@@ -187,14 +189,6 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
           </div>
 
           <div className="form-group">
-            <label>Imagen (opcional)</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-          </div>
-          <div className="form-group">
             <label>Tags (separados por coma)</label>
             <input
               type="text"
@@ -209,6 +203,31 @@ const ReportModal = ({ report, onClose, onReportSaved, onDelete }) => {
               }
             />
           </div>
+
+          <div className="form-group">
+            <label>Imagen (opcional)</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </div>
+
+          {!image && report.image && (
+            <div className="preview-image">
+              <p>Imagen actual:</p>
+              <img
+                src={`http://localhost:3002${report.image}`}
+                alt="Imagen actual"
+                style={{
+                  width: "100%",
+                  maxHeight: "200px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          )}
 
           <div className="modal-actions">
             <button type="submit" className="btn-primary">
