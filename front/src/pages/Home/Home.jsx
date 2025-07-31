@@ -122,7 +122,7 @@ function Home() {
               contribuciones de la comunidad.
             </p>
           </div>
-          </div>
+        </div>
       </section>
 
       <section className={styles.cardsSection}>
@@ -193,19 +193,33 @@ function Home() {
         </div>
       </section>
 
-      <section className={styles.hero}>
-        <div className={styles.heroText}>
-          <h2>Descargá la App</h2>
-          <p>
-            Disponible para Android e iOS. Empezá a moverte de forma más segura.
-          </p>
-          <div className={styles.heroButtons}>
-            <button className={styles.downloadBtn}>Google Play</button>
-            <button className={styles.downloadBtn}>App Store</button>
-          </div>
+      <section className={styles.descargaApp}>
+        <div className={styles.curvaSuperior}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path
+              fill="#fff"
+              fillOpacity="1"
+              d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,112C672,96,768,128,864,144C960,160,1056,160,1152,144C1248,128,1344,96,1392,80L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+            ></path>
+          </svg>
         </div>
-        <div className={styles.heroImage}>
-          <img src="/assets/mockup3.png" alt="Mockup Vía Segura" />
+
+        <div className={styles.contenidoApp}>
+          <div className={styles.textoApp}>
+            <h2>Descargá la aplicación</h2>
+            <p>
+              Disponible para Android e iOS. Empezá a moverte de forma más
+              segura.
+            </p>
+            <div className={styles.botones}>
+              <button>Google Play</button>
+              <button>Tienda de aplicaciones</button>
+            </div>
+          </div>
+          <div className={styles.mockupApp}>
+            <img src="/assets/mockup3.png" alt="Mockup Vía Segura" />
+          </div>
+         
         </div>
       </section>
     </div>
