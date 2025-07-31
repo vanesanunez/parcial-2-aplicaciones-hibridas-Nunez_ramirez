@@ -7,29 +7,12 @@ body {
 
 .homeContainer {
   padding-top: 170rem; 
-  /*padding-top: 4rem;*/
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10rem;
   font-family: 'Inter', sans-serif;
 }
 
-/*.titulo2 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: rgb(80, 80, 247) ;
-  background-color: #4a63f0;
-  color: aliceblue;
-  margin-bottom: 30px;
-}
-.titulo3 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  /*background-color: #f2826d ;
-  background-color: #ff857a;
-  color: aliceblue;
-  margin-bottom: 30px;
-}*/
 
 .titulo2, .titulo3 {
   background: none;
@@ -166,18 +149,7 @@ body {
   transform: scale(1.1);
 }
 
-/*.card {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
 
-.card:hover {
-  transform: scale(1.02);
-}
-*/
 
 .card {
   background: white;
@@ -257,69 +229,9 @@ footer {
   margin-top: 2px;
 }
 
-/*
-.hero {
-  position: relative;
-  background: linear-gradient(to bottom right, #3c73e8, #5672ff);
-  color: white;
-  padding: 4rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  overflow: hidden;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
-}
 
-.heroText {
-  max-width: 500px;
-  z-index: 2;
-}
-
-.heroText h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.heroText p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.heroButtons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.downloadBtn {
-  background-color: #ffffff;
-  color: #3c58e8;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.downloadBtn:hover {
-  background-color: #e6eaff;
-}
-
-.heroImage {
-  max-width: 300px;
-  z-index: 2;
-}
-*/
 
 .descargaApp {
-  /*position: relative;
-  background: linear-gradient(to right, #4a6cf7, #5c8dfc);
-  padding: 4rem 1rem;
-  overflow: hidden;
-  text-align: center;*/
   position: relative;
   background: #4a6cf7;
   overflow: hidden;
@@ -335,22 +247,13 @@ footer {
   height: auto;
 }
 .curvaSuperior {
- /* position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color: white;
-  border-radius: 0 0 60px 60px;
-  z-index: 1;*/
-   position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 }
 
 .curvaInferior {
- /* margin-top: 4rem;*/
   position: absolute;
   bottom: 0;
   left: 0;
@@ -358,16 +261,7 @@ footer {
 }
 
 .contenidoApp {
- /* position: relative;
-  z-index: 2;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  flex-wrap: wrap;
-  text-align: left;
-  padding: 2rem;*/
-    display: flex;
   justify-content: center;
   align-items: center;
   gap: 4rem;
