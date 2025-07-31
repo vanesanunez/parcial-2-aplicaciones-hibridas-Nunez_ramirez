@@ -178,6 +178,11 @@ const Reports = () => {
           value={reportLocation}
           onChange={(e) => setReportLocation(e.target.value)}
         />
+         <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
 
      
         <Button type="submit" className="btn-primary">
