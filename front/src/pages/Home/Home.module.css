@@ -6,7 +6,7 @@ body {
 
 
 .homeContainer {
-  padding-top: 150rem; 
+  padding-top: 170rem; 
   /*padding-top: 4rem;*/
   padding-left: 20px;
   padding-right: 20px;
@@ -416,7 +416,10 @@ footer {
 .botones button:hover {
   background-color: #f1f1f1;
 }
-
+.botonesStores{
+   display: flex;
+  gap: 1rem;
+}
 .mockupApp img {
   max-width: 280px;
 }

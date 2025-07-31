@@ -211,9 +211,9 @@ function Home() {
               Disponible para Android e iOS. Empezá a moverte de forma más
               segura.
             </p>
-            <div className={styles.botones}>
-              <button>Google Play</button>
-              <button>Tienda de aplicaciones</button>
+            <div className={styles.botonesStores}>
+              <img src="/assets/boton3.png" alt="Google Play" />
+              <img src="/assets/botonapple.jpg" alt="App Store" />
             </div>
           </div>
           <div className={styles.mockupApp}>
