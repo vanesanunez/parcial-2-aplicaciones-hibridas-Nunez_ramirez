@@ -64,6 +64,13 @@ const ReportDetails = () => {
   return (
     <div>
       <h2>Reporte: {report.title}</h2>
+      {report.image && (
+      <img
+        className="report-image"
+        src={`http://localhost:3002${report.image}`}
+        alt="Imagen del reporte"
+      />
+    )}
       <p>Descripción: {report.description}</p>
       <p>Ubicación: {report.location}</p>
       <p>Fecha: {report.date.substring(0,10)}</p>
