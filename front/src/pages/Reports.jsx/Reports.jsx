@@ -18,7 +18,7 @@ const Reports = () => {
   const [suggestions, setSuggestions] = useState([]);
   const debouncedSearch = useDebounce(search, 1000);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(6);
   const [image,setImage] = useState(null);
   
  
@@ -44,36 +44,6 @@ const Reports = () => {
   useEffect(() => {
     fetchReports();
   }, []);
-
-  // Crear nuevo reporte
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const newReport = {
-  //     title: reportName,
-  //     description: reportDescription,
-  //     location: reportLocation,
-  //     tags: ["general"],
-  //     locationPoint: [],
-  //   };
-
-  //   try {
-  //     const token = Cookies.get("jwtoken");
-  //     if (!token) {
-  //       return console.error("No hay token. Por favor inicia sesión.");
-  //     }
-
-  //     await axios.post("http://localhost:3002/reports", newReport, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-
-  //     setReportName("");
-  //     setReportDescription("");
-  //     setReportLocation("");
-  //     fetchReports();
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
