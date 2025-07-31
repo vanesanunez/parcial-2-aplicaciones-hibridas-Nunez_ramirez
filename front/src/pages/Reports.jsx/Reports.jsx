@@ -20,7 +20,7 @@ const Reports = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const [image,setImage] = useState(null);
-  console.log(image)
+  
  
 
   // Traer todos los reportes (no requiere token de autenticación)
@@ -77,6 +77,7 @@ const Reports = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Enviando reporte...");
   
     const token = Cookies.get("jwtoken");
     if (!token) {
@@ -237,6 +238,7 @@ const Reports = () => {
             location={report.location}
             date={report.createdAt}
             tags={report.tags}
+            image={report.image}
           >
             <Button onClick={() => navigate(`/reports/${report._id}`)}>
               Ver Detalles

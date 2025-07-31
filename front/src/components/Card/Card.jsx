@@ -1,9 +1,18 @@
 import React from 'react';
 import './Card.scss';
 
-const Card = ({ title, description, location, date, tags, children }) => {
+const Card = ({ title, description, location, date, tags, image, children }) => {
   return (
     <div className="card">
+
+      {image && (
+        <img
+          src={`http://localhost:3002${image}`}
+          alt="Imagen del reporte"
+          className="card-image"
+        />
+      )}
+
       {title && <h2>{title}</h2>}
 
       {description && (
