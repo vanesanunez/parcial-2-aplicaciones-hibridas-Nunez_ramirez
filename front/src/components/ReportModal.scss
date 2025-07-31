@@ -15,7 +15,7 @@
     background-color: #fff;
     padding: 2rem;
     border-radius: 1.5rem;
-    width: 420px;
+    width: 430px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
@@ -49,6 +49,7 @@
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     input[type="file"] {
       padding: 0.4rem;
@@ -105,7 +106,7 @@
   
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 90px;
     }
   }
   
@@ -143,3 +144,4 @@
       }
     }
   }
+
