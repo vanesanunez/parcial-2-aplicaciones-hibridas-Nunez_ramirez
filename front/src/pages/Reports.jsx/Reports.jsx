@@ -46,71 +46,73 @@ const Reports = () => {
   }, []);
 
   // Crear nuevo reporte
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const newReport = {
+  //     title: reportName,
+  //     description: reportDescription,
+  //     location: reportLocation,
+  //     tags: ["general"],
+  //     locationPoint: [],
+  //   };
+
+  //   try {
+  //     const token = Cookies.get("jwtoken");
+  //     if (!token) {
+  //       return console.error("No hay token. Por favor inicia sesión.");
+  //     }
+
+  //     await axios.post("http://localhost:3002/reports", newReport, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+
+  //     setReportName("");
+  //     setReportDescription("");
+  //     setReportLocation("");
+  //     fetchReports();
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }; 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newReport = {
-      title: reportName,
-      description: reportDescription,
-      location: reportLocation,
-      tags: ["general"],
-      locationPoint: [],
-    };
-
+  
+    const token = Cookies.get("jwtoken");
+    if (!token) {
+      return console.error("No hay token. Por favor inicia sesión.");
+    }
+  
+    const formData = new FormData();
+    formData.append("title", reportName);
+    formData.append("description", reportDescription);
+    formData.append("location", reportLocation);
+    formData.append("tags", "general"); 
+    // formData.append("locationPoint", JSON.stringify([])); // para usar coordenadas más adelante
+  
+    if (image) {
+      formData.append("image", image); // campo esperado por multer en el backend
+    }
+  
     try {
-      const token = Cookies.get("jwtoken");
-      if (!token) {
-        return console.error("No hay token. Por favor inicia sesión.");
-      }
-
-      await axios.post("http://localhost:3002/reports", newReport, {
-        headers: { Authorization: `Bearer ${token}` },
+      await axios.post("http://localhost:3002/reports", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
       });
-
+  
+      // limpiar campos
       setReportName("");
       setReportDescription("");
       setReportLocation("");
+      setImage(null);
       fetchReports();
     } catch (err) {
       console.error(err);
     }
   };
-
- /* const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  const token = Cookies.get("jwtoken");
-  if (!token) {
-    return console.error("No hay token. Por favor inicia sesión.");
-  }
-
-  const formData = new FormData();
-  formData.append("title", reportName);
-  formData.append("description", reportDescription);
-  formData.append("location", reportLocation);
-  formData.append("tags", "general");
-  formData.append("locationPoint", JSON.stringify([])); 
-  if (image) {
-    formData.append("image", image);
-  }
-
-  try {
-    await axios.post("http://localhost:3002/reports", formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data"
-      }
-    });
-
-    // limpiar
-    setReportName("");
-    setReportDescription("");
-    setReportLocation("");
-    setImage(null);
-    fetchReports();
-  } catch (err) {
-    console.error(err);
-  }
-};*/
+  ///
 
   const handleSearch = async (searchTerm) => {
     try {
