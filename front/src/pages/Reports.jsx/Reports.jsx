@@ -227,7 +227,7 @@ const Reports = () => {
           ))}
         </div>
         <div className="reports-select">
-          <p>Mostrando resultados por página:</p>
+          <p>Mostrando resultados:</p>
           <select
             value={limit}
             onChange={(e) => {
