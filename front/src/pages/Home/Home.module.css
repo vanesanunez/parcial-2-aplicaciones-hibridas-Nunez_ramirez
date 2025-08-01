@@ -6,7 +6,7 @@ body {
 
 
 .homeContainer {
-  padding-top: 215rem; 
+  padding-top: 220rem; 
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10rem;
@@ -320,7 +320,7 @@ footer {
 
 /*seccion beneficios*/
 .beneficios {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   text-align: center;
   background-color: #f9f9ff;
 }
@@ -393,7 +393,7 @@ footer {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 601px) {
   .intro,
   .solucion {
     flex-direction: column;
@@ -416,11 +416,13 @@ footer {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 480px) {
   .homeContainer {
-    padding-top: 260rem;
+    padding-top: 550rem;
   }
-
+  .beneficios {
+    padding-top: 0;
+  }
   .card {
     padding: 0.75rem;
   }
