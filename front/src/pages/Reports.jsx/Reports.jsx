@@ -84,7 +84,7 @@ const Reports = () => {
       setReportName("");
       setReportDescription("");
       setReportLocation("");
-      setReportTags("");   // limpiar también tags
+      setReportTags("");   
       setImage(null);
       fetchReports();
     } catch (err) {

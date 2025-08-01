@@ -58,7 +58,7 @@ export const createUser = async (req, res) => {
   } catch (error) {
     console.error("Error en createUser:", error);
 
-    // Si es error de índice único duplicado, capturarlo y devolver mensaje claro
+    // Si es error de índice único duplicado, capturarlo y devolver mensaje 
     if (error.code === 11000) {
       const campoDuplicado = Object.keys(error.keyValue)[0];
       return res.status(400).json({ message: `El ${campoDuplicado} ya está registrado` });
