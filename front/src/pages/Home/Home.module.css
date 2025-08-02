@@ -6,10 +6,10 @@ body {
 
 
 .homeContainer {
-  padding-top: 200rem; 
+  padding-top: 160rem; 
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 10rem;
+  padding-bottom: 0;
   font-family: 'Inter', sans-serif;
 }
 
