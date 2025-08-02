@@ -1,5 +1,5 @@
 import express from "express";
-import { createReporte, getReportes, getReporteById, searchByTag, searchByTitle, updateReporte, deleteReporte } from "../controllers/reportsController.js";
+import { createReporte, getReportes, getReporteById, getReportesByUser, searchByTag, searchByTitle, updateReporte, deleteReporte } from "../controllers/reportsController.js";
 import authenticateJWT from "../middlewares/authMiddleware.js";
 import upload from "../middlewares/upload.js";
 
@@ -10,6 +10,7 @@ reportsRouter.get('/search', searchByTitle); // nueva búsqueda por título
 reportsRouter.get('/', getReportes); 
 reportsRouter.get('/:id', getReporteById); 
 reportsRouter.get('/search/tags', searchByTag); 
+reportsRouter.get('/usuario/:userId', getReportesByUser);
 //reportsRouter.get('/search', searchReports); 
 //reportsRouter.get('/:reportId/details', getReportDetailsWithTasks); 
 // reportsRouter.put('/:id', authenticateJWT, updateReporte); // requiere token para modificar
@@ -18,5 +19,6 @@ reportsRouter.get('/search/tags', searchByTag);
 reportsRouter.post('/', authenticateJWT, upload.single("image"), createReporte); //requiere token, ahora permite imagn
 reportsRouter.put('/:id', authenticateJWT, upload.single("image"), updateReporte);
 reportsRouter.delete('/:id', authenticateJWT, deleteReporte);
+
 
 export { reportsRouter };

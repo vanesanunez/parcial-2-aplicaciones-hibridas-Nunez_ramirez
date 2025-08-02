@@ -58,7 +58,7 @@ export const createUser = async (req, res) => {
   } catch (error) {
     console.error("Error en createUser:", error);
 
-    // Si es error de índice único duplicado, capturarlo y devolver mensaje claro
+    // Si es error de índice único duplicado, capturarlo y devolver mensaje 
     if (error.code === 11000) {
       const campoDuplicado = Object.keys(error.keyValue)[0];
       return res.status(400).json({ message: `El ${campoDuplicado} ya está registrado` });
@@ -68,25 +68,6 @@ export const createUser = async (req, res) => {
   }
 };
 
-
-
-// POST /users/login — Login
-// export const loginUser = async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await User.findOne({ email });
-//     if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
-
-//     const validPassword = await bcrypt.compare(password, user.password);
-//     if (!validPassword) return res.status(401).json({ message: "Contraseña incorrecta" });
-
-//     const token = jwt.sign({ id: user._id, email: user.email }, secretKey, { expiresIn: '1h' });
-//     res.status(200).json({ token });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -123,7 +104,7 @@ export const getUsers = async (req, res) => {
 // GET /users/:id — Obtener un usuario por id
 export const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id); // cambio aquí
+    const user = await User.findById(req.params.id); 
     if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
 
     const { password, ...userWithoutPassword } = user.toObject();
@@ -145,7 +126,7 @@ export const updateUser = async (req, res) => {
     }
 
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id, // cambio aquí
+      req.params.id, 
       actualizaciones,
       { new: true }
     );

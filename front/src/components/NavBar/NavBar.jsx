@@ -60,6 +60,9 @@ const NavBar = () => {
           {user ? (
             <>
               <span>¡Hola, {user.name} !</span>
+              <Link to="/perfil" onClick={() => setMenuMovil(false)}>
+        Mi perfil
+      </Link>
               <button onClick={logoutUser}>Logout</button>
             </>
           ) : (

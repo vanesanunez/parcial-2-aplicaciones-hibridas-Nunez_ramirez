@@ -84,7 +84,7 @@ const Reports = () => {
       setReportName("");
       setReportDescription("");
       setReportLocation("");
-      setReportTags("");   // limpiar también tags
+      setReportTags("");   
       setImage(null);
       fetchReports();
     } catch (err) {
@@ -227,7 +227,7 @@ const Reports = () => {
           ))}
         </div>
         <div className="reports-select">
-          <p>Mostrando resultados por página:</p>
+          <p>Mostrando resultados:</p>
           <select
             value={limit}
             onChange={(e) => {
