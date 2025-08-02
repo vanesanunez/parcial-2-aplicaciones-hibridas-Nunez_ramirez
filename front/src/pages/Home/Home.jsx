@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+/*import SliderComponent from "../../components/Slider";*/
+
 
 import {
   FaRoute,
@@ -16,11 +15,7 @@ import {
 
 import { MdCheckCircleOutline } from "react-icons/md";
 
-const bannerImages = [
-  "/assets/banner1.jpg",
-  "/assets/banner2.jpg",
-  "/assets/banner3.jpg",
-];
+
 
 const sliderSettings = {
   dots: true,
@@ -55,37 +50,7 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <section className={styles.bannerSlider}>
-        <Slider {...sliderSettings}>
-          {bannerImages.map((img, index) => (
-            <div key={index}>
-              <img
-                src={img}
-                alt={`Banner ${index + 1}`}
-                className={styles.bannerImage}
-              />
-            </div>
-          ))}
-        </Slider>
-        <div className={styles.bannerTextWrapper}>
-          <p className={styles.bannerEmotion}>
-            “Sentite acompañado en cada paso. Con Vía Segura, no estás solo:
-            cada reporte es un acto de cuidado colectivo. Juntos construimos un
-            camino más seguro.”
-          </p>
-          <ul className={styles.bannerTech}>
-            <li>✅ Análisis colaborativo de trayectos</li>
-            <li>✅ Priorización por iluminación y seguridad</li>
-            <li>✅ Geolocalización y mapeo actualizado</li>
-          </ul>
-          <p className={styles.bannerExtra}>
-            Disponible en Android e iOS, Vía Segura te permite visualizar
-            reportes, elegir rutas seguras y recibir alertas en tiempo real
-            desde una interfaz clara y rápida.
-          </p>
-        </div>
-      </section>
-
+      
       <section className={styles.intro}>
         <div className={styles.introImage}>
           <img
@@ -145,6 +110,8 @@ function Home() {
           />
         </div>
       </section>
+
+
 
       <section className={styles.beneficios}>
         <h2>Beneficios de usar Vía Segura</h2>

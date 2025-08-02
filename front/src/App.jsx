@@ -12,6 +12,7 @@ import ProtectedRoutes from './utils/ProtectedRoutes.jsx'
 import UserProfile from './pages/userProfile.jsx'
 
 
+
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
       </Route>
       </Routes>
 
+      
       <Footer />
     </>
   )

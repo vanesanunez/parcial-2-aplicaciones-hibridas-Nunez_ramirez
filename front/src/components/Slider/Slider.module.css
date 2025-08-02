@@ -1,0 +1,47 @@
+.slider-wrapper {
+  width: 100%;
+   max-height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bannerImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.slide {
+    position: relative;
+  text-align: center;
+}
+
+.slide-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.slide-text {
+    position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  max-width: 90%;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .slide-image {
+    max-height: 250px;
+  }
+
+  .slide-text {
+    font-size: 0.95rem;
+  }
+}

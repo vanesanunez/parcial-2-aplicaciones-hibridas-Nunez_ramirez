@@ -382,6 +382,78 @@ footer {
   height: 100%;
   object-fit: cover;
 }
+
+/*estilo banner
+.bannerSlider {
+  padding-top: 300rem;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0;
+  filter: brightness(0.7);
+}
+
+.bannerTextWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 1rem 2rem;
+  max-width: 800px;
+  z-index: 2;
+}
+
+.bannerEmotion {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.bannerTech {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: left;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.bannerTech ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bannerTech li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.bannerTech li::before {
+  content: "✅";
+  margin-right: 0.5rem;
+  color: #9fffa5;
+}
+
+.bannerExtra {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+*/
+
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
