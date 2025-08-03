@@ -61,40 +61,6 @@ const ReportDetails = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    // <div className="report-details-card">
-    //   <div className="info">
-    //   <h2>Reporte: {report.title}</h2>
-
-    //   {report.image && (
-    //     <img
-    //       className="report-image"
-    //       src={`http://localhost:3002${report.image}`}
-    //       alt="Imagen del reporte"
-    //     />
-    //   )}
-    //   <p>Descripción: {report.description}</p>
-    //   <p>Ubicación: {report.location}</p>
-    //   <p>Fecha: {report.date.substring(0, 10)}</p>
-
-    //   <Button onClick={() => setShowModal(true)} className="btn-primary">
-    //     Editar
-    //   </Button>
-    //   <Button onClick={handleDelete} className="btn-danger">
-    //     Eliminar
-    //   </Button>
-    //   </div>
-      
-
-    //   {showModal && (
-    //     <ReportModal
-    //       report={report}
-    //       onClose={() => setShowModal(false)}
-    //       onReportSaved={handleReportSaved}
-    //       onDelete={handleDelete}
-    //     />
-    //   )}
-    // </div>
-
     <div className="report-details-card">
   <div className="info">
   {report.image && (

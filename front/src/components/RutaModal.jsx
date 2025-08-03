@@ -31,7 +31,7 @@ const RutaModal = ({ ruta, onClose, onRutaSaved }) => {
       await axios.put(`http://localhost:3002/routes/${ruta._id}`, updatedRuta, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      onRutaSaved(); // actualiza en el padre
+      onRutaSaved(); 
     } catch (err) {
       alert("Error al guardar los cambios.");
       console.error(err);
@@ -45,8 +45,8 @@ const RutaModal = ({ ruta, onClose, onRutaSaved }) => {
         await axios.delete(`http://localhost:3002/routes/${ruta._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        onClose(); // cerrar el modal
-        onRutaSaved(); // actualiza rutas en padre
+        onClose(); 
+        onRutaSaved(); 
       } catch (err) {
         alert("Error al borrar la ruta.");
         console.error(err);

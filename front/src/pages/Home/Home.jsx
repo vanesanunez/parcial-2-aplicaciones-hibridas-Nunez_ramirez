@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
-/*import SliderComponent from "../../components/Slider";*/
+
 
 
 import {
@@ -13,20 +13,6 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
-import { MdCheckCircleOutline } from "react-icons/md";
-
-
-
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  arrows: false,
-};
 
 function Home() {
   const [rutas, setRutas] = useState([]);

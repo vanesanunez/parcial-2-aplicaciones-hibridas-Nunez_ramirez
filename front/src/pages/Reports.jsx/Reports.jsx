@@ -60,7 +60,7 @@ const Reports = () => {
     formData.append("description", reportDescription);
     formData.append("location", reportLocation);
   
-    // Convertir string de tags separado por coma a array limpio y enviarlo como JSON string
+    
     const tagsArray = reportTags
       .split(",")
       .map(tag => tag.trim())
